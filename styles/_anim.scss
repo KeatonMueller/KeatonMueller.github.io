@@ -1,0 +1,68 @@
+// content fades in after delay
+.fadeIn {
+    opacity: 0;
+    animation: fadeIn 0.25s ease forwards $anim-time + 0.25s;
+}
+
+// logo is centered and animates
+#logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(100%);
+    width: 157px;
+    height: 262px;
+    animation: fadeOut 0.25s ease forwards $anim-time + 0.15s;
+}
+
+// top of logo starts invisible then animates
+#logo-top {
+    stroke-dasharray: 614;
+    stroke-dashoffset: 614;
+    animation: animTop $anim-time ease forwards;
+}
+
+// bottom of logo starts invisible then animates
+#logo-bottom {
+    stroke-dasharray: 356;
+    stroke-dashoffset: 356;
+    animation: animBottom $anim-time ease forwards;
+}
+
+// reveal top of logo then add fill
+@keyframes animTop {
+    55% {
+        fill: transparent;
+        stroke-dashoffset: 0;
+    }
+    to {
+        fill: $clr-primary-400;
+        stroke-dashoffset: 0;
+    }
+}
+
+// reveal bottom of logo then add fill
+@keyframes animBottom {
+    55% {
+        fill: transparent;
+        stroke-dashoffset: 0;
+    }
+    to {
+        fill: $clr-neutral-100;
+        stroke-dashoffset: 0;
+    }
+}
+
+// fade out content
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+// fade in content
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}

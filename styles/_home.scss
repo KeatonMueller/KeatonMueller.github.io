@@ -1,0 +1,286 @@
+.nav-container {
+    background: white;
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+nav {
+    height: 10vh;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+
+    h1 {
+        min-width: 18rem;
+        flex: 3;
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    }
+
+    ul {
+        min-width: 22rem;
+        display: flex;
+        justify-content: space-between;
+        flex: 1;
+        list-style: none;
+
+        li {
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin: 1rem;
+            a {
+                color: #8a8a8a;
+                border-bottom: 2px solid white;
+                transition: 0.35s;
+            }
+            a:hover {
+                color: black;
+                border-bottom: 2px solid black;
+            }
+        }
+    }
+}
+
+.selected {
+    color: black;
+    border-bottom: 2px solid black;
+}
+
+.info-container {
+    position: relative;
+    height: 90vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.blue-corner {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 40rem;
+    background: $clr-primary-400;
+    clip-path: polygon(100% 50%, 100% 100%, 0 100%);
+}
+
+.left-box {
+    height: 100%;
+    width: 30%;
+    background: $clr-primary-400;
+}
+
+.main-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 80%;
+    min-width: 46rem;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 10% repeat(3, 1fr) 10%;
+    grid-template-rows: 10% 2fr repeat(4, 1fr) 10%;
+
+    h2 {
+        grid-row: 2/3;
+        grid-column: 2/3;
+        display: flex;
+        align-items: center;
+    }
+
+    img {
+        grid-row: 2/3;
+        grid-column: 4/5;
+        display: flex;
+        justify-self: right;
+    }
+
+    .info {
+        grid-row: 3/6;
+        grid-column: 2/5;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        p {
+            font-size: 2rem;
+        }
+    }
+
+    a {
+        font-size: 2rem;
+        display: inline;
+        padding: 0.5rem;
+        position: relative;
+        color: black;
+        background-color: none;
+        transition: 0.5s;
+    }
+
+    a:hover {
+        // background-color: #10c6ff;
+        color: $clr-primary-400;
+    }
+    .btn-projects {
+        grid-row: 6/7;
+        grid-column: 3/4;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .btn-contact {
+        grid-row: 6/7;
+        grid-column: 4/5;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /*
+        button border animation logic
+    */
+    // all borders
+    .btn-projects a div::before,
+    .btn-projects a div::after,
+    .btn-projects a::before,
+    .btn-projects a::after,
+    .btn-contact a div::before,
+    .btn-contact a div::after,
+    .btn-contact a::before,
+    .btn-contact a::after {
+        content: "";
+        position: absolute;
+        transition: transform 0.5s;
+    }
+    // top and bottom borders
+    .btn-projects a::before,
+    .btn-projects a::after,
+    .btn-contact a::before,
+    .btn-contact a::after {
+        width: 100%;
+        height: 2px;
+        background-color: black;
+    }
+    // top borders
+    .btn-projects a::before,
+    .btn-contact a::before {
+        top: 0;
+        left: 0;
+        transform: scaleX(0.2);
+        transform-origin: right;
+    }
+    // top border hover
+    .btn-projects a:hover::before,
+    .btn-contact a:hover::before {
+        transform: scaleX(1);
+    }
+    // bottom borders
+    .btn-projects a::after,
+    .btn-contact a::after {
+        bottom: 0;
+        left: 0;
+        transform: scaleX(0.2);
+        transform-origin: left;
+    }
+    // bottom border hover
+    .btn-projects a:hover::after,
+    .btn-contact a:hover::after {
+        transform: scaleX(1);
+    }
+
+    // left and right borders
+    .btn-projects a div::before,
+    .btn-projects a div::after,
+    .btn-contact a div::before,
+    .btn-contact a div::after {
+        width: 2px;
+        height: 100%;
+        background-color: black;
+    }
+    // left borders
+    .btn-projects a div::before,
+    .btn-contact a div::before {
+        top: 0;
+        left: 0;
+        transform: scaleY(0.2);
+        transform-origin: bottom;
+    }
+    // left border hover
+    .btn-projects a:hover div::before,
+    .btn-contact a:hover div::before {
+        transform: scaleY(1);
+    }
+    // right borders
+    .btn-projects a div::after,
+    .btn-contact a div::after {
+        top: 0;
+        right: -1px;
+        transform: scaleY(0.2);
+        transform-origin: top;
+    }
+    // bottom border hover
+    .btn-projects a:hover div::after,
+    .btn-contact a:hover div::after {
+        transform: scaleY(1);
+    }
+}
+
+.headshot {
+    width: 20rem;
+    border-radius: 50%;
+}
+
+// adjustments for smaller screens
+@media (max-width: 35rem) {
+    // vertical nav
+    nav {
+        height: 14vh;
+        flex-direction: column;
+    }
+    // adjust info section
+    .info-container {
+        height: 86vh;
+    }
+    // larger card
+    .main-card {
+        width: 90%;
+        height: 90%;
+        min-width: 30rem;
+
+        grid-template-columns: 10% repeat(3, 1fr) 10%;
+        grid-template-rows: 5% 2fr repeat(4, 1fr) 5%;
+
+        .headshot {
+            width: 16rem;
+        }
+
+        .info {
+            justify-content: space-evenly;
+        }
+
+        .btn-projects {
+            grid-column: 2/3;
+            position: relative;
+            justify-content: left;
+        }
+
+        .btn-contact {
+            justify-content: right;
+        }
+    }
+}

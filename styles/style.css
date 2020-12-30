@@ -40,8 +40,8 @@ a {
 
 .fadeIn {
   opacity: 0;
-  -webkit-animation: fadeIn 0.25s ease forwards 1.45s;
-          animation: fadeIn 0.25s ease forwards 1.45s;
+  -webkit-animation: fadeIn 0.25s linear forwards 1.45s;
+          animation: fadeIn 0.25s linear forwards 1.45s;
 }
 
 #logo {
@@ -52,22 +52,22 @@ a {
           transform: translate(-50%, -50%) scale(100%);
   width: 157px;
   height: 262px;
-  -webkit-animation: fadeOut 0.25s ease forwards 1.35s;
-          animation: fadeOut 0.25s ease forwards 1.35s;
+  -webkit-animation: fadeOut 0.25s linear forwards 1.35s;
+          animation: fadeOut 0.25s linear forwards 1.35s;
 }
 
 #logo-top {
   stroke-dasharray: 614;
   stroke-dashoffset: 614;
-  -webkit-animation: animTop 1.2s ease forwards;
-          animation: animTop 1.2s ease forwards;
+  -webkit-animation: animTop 1.2s ease-in-out forwards;
+          animation: animTop 1.2s ease-in-out forwards;
 }
 
 #logo-bottom {
   stroke-dasharray: 356;
   stroke-dashoffset: 356;
-  -webkit-animation: animBottom 1.2s ease forwards;
-          animation: animBottom 1.2s ease forwards;
+  -webkit-animation: animBottom 1.2s ease-in-out forwards;
+          animation: animBottom 1.2s ease-in-out forwards;
 }
 
 @-webkit-keyframes animTop {
@@ -200,8 +200,8 @@ nav ul li {
 
 nav ul li a {
   color: #8a8a8a;
-  -webkit-transition: 0.35s;
-  transition: 0.35s;
+  -webkit-transition: color 350ms;
+  transition: color 350ms;
 }
 
 nav ul li::after {
@@ -216,8 +216,10 @@ nav ul li::after {
           transform-origin: center;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
-  -webkit-transition: 0.35s;
-  transition: 0.35s;
+  -webkit-transition: -webkit-transform 350ms;
+  transition: -webkit-transform 350ms;
+  transition: transform 350ms;
+  transition: transform 350ms, -webkit-transform 350ms;
 }
 
 nav ul li:hover::after {
@@ -249,12 +251,6 @@ nav ul li:hover a {
   background: #0c75e8;
   -webkit-clip-path: polygon(100% 50%, 100% 100%, 0 100%);
           clip-path: polygon(100% 50%, 100% 100%, 0 100%);
-}
-
-.left-box {
-  height: 100%;
-  width: 30%;
-  background: #0c75e8;
 }
 
 .main-card {
@@ -340,8 +336,8 @@ nav ul li:hover a {
   position: relative;
   color: black;
   background-color: none;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: color 500ms;
+  transition: color 500ms;
 }
 
 .main-card a:hover {
@@ -396,10 +392,12 @@ nav ul li:hover a {
 .main-card .btn-contact a::after {
   content: "";
   position: absolute;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
+  -webkit-transition-duration: 500ms;
+          transition-duration: 500ms;
+  -webkit-transition-property: -webkit-transform background-color;
+  transition-property: -webkit-transform background-color;
+  transition-property: transform background-color;
+  transition-property: transform background-color, -webkit-transform background-color;
   background-color: black;
 }
 
@@ -492,7 +490,7 @@ nav ul li:hover a {
   border-radius: 50%;
 }
 
-@media (max-width: 35rem) {
+@media screen and (max-width: 35rem) {
   nav {
     height: 14vh;
     -webkit-box-orient: vertical;
@@ -533,6 +531,71 @@ nav ul li:hover a {
     -webkit-box-pack: right;
         -ms-flex-pack: right;
             justify-content: right;
+  }
+}
+
+.grid-container {
+  position: relative;
+  min-height: 90vh;
+  width: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.grid {
+  position: absolute;
+  height: 90%;
+  width: 90%;
+  display: -ms-grid;
+  display: grid;
+  gap: 1rem;
+  -ms-grid-columns: (minmax(24rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  grid-auto-rows: 24rem;
+}
+
+.card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #353535;
+  font-size: 3rem;
+  color: #fff;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5rem;
+  -webkit-transition: all 500ms;
+  transition: all 500ms;
+  overflow: hidden;
+}
+
+.card:hover {
+  -webkit-transform: translateY(-3px) scale(1.1);
+          transform: translateY(-3px) scale(1.1);
+  z-index: 1;
+}
+
+@media screen and (min-width: 50rem) {
+  .card-tall {
+    grid-row: span 2 / auto;
+  }
+  .card-wide {
+    grid-column: span 2 / auto;
   }
 }
 /*# sourceMappingURL=style.css.map */

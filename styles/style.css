@@ -719,4 +719,15 @@ nav ul li:hover a {
 .website {
   background-image: url("../images/projects/Website.png");
 }
+
+.three-container {
+  overflow: hidden;
+  height: 90vh;
+}
+
+@media screen and (max-width: 35rem) {
+  .three-container {
+    height: 86vh;
+  }
+}
 /*# sourceMappingURL=style.css.map */

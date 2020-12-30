@@ -1,0 +1,11 @@
+.three-container {
+    overflow: hidden;
+    height: 90vh;
+}
+
+// make sure height is exact to prevent scrolling on mobile
+@media screen and (max-width: 35rem) {
+    .three-container {
+        height: 86vh;
+    }
+}

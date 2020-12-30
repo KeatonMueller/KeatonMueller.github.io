@@ -144,7 +144,7 @@ header {
   position: sticky;
   width: 100%;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   overflow: hidden;
 }
 
@@ -245,8 +245,8 @@ nav ul li:hover a {
 .blue-corner {
   position: absolute;
   right: 0;
-  bottom: 0;
-  height: 100%;
+  top: 0;
+  height: 90vh;
   width: 40rem;
   background: #0c75e8;
   -webkit-clip-path: polygon(100% 50%, 100% 100%, 0 100%);
@@ -537,40 +537,35 @@ nav ul li:hover a {
 .grid-container {
   position: relative;
   min-height: 90vh;
+  height: 100%;
   width: 100;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .grid {
-  position: absolute;
-  height: 90%;
-  width: 90%;
+  width: 100%;
+  padding: 2rem 2rem;
   display: -ms-grid;
   display: grid;
   gap: 1rem;
   -ms-grid-columns: (minmax(24rem, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-  grid-auto-rows: 24rem;
+  grid-auto-rows: 48rem;
+}
+
+@media screen and (min-width: 50rem) {
+  .grid {
+    grid-auto-rows: 24rem;
+  }
+  .card-tall {
+    grid-row: span 2 / auto;
+  }
+  .card-wide {
+    grid-column: span 2 / auto;
+  }
 }
 
 .card {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  padding: 2rem;
   background: #353535;
   font-size: 3rem;
   color: #fff;
@@ -582,20 +577,146 @@ nav ul li:hover a {
   -webkit-transition: all 500ms;
   transition: all 500ms;
   overflow: hidden;
-}
-
-.card:hover {
-  -webkit-transform: translateY(-3px) scale(1.1);
-          transform: translateY(-3px) scale(1.1);
   z-index: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #444444;
+  background-blend-mode: multiply;
 }
 
-@media screen and (min-width: 50rem) {
-  .card-tall {
-    grid-row: span 2 / auto;
+.card h1 {
+  font-size: 3rem;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.card h1::after {
+  content: "";
+  position: absolute;
+  left: -2rem;
+  right: -3rem;
+  top: -0.25rem;
+  bottom: -0.25rem;
+  background-color: #0c75e8;
+  z-index: -1;
+  -webkit-clip-path: polygon(0 0, 100% 0, calc(100% - 2rem) 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, calc(100% - 2rem) 100%, 0 100%);
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transition: -webkit-transform 200ms ease-in;
+  transition: -webkit-transform 200ms ease-in;
+  transition: transform 200ms ease-in;
+  transition: transform 200ms ease-in, -webkit-transform 200ms ease-in;
+}
+
+.card p {
+  font-size: 2rem;
+  position: relative;
+  color: transparent;
+  z-index: 1;
+  margin-right: 3rem;
+  padding: 1rem;
+  -webkit-transition: color 200ms 250ms;
+  transition: color 200ms 250ms;
+}
+
+.card p a {
+  pointer-events: none;
+  text-decoration: none;
+  color: transparent;
+  -webkit-transition: color 200ms ease-out 300ms;
+  transition: color 200ms ease-out 300ms;
+}
+
+.card p::after {
+  content: "";
+  position: absolute;
+  left: -0.25rem;
+  right: -0.25rem;
+  top: -0.75rem;
+  bottom: -0.25rem;
+  background-color: #f5f5f5;
+  z-index: -1;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transition: -webkit-transform 200ms ease-in 250ms;
+  transition: -webkit-transform 200ms ease-in 250ms;
+  transition: transform 200ms ease-in 250ms;
+  transition: transform 200ms ease-in 250ms, -webkit-transform 200ms ease-in 250ms;
+}
+
+@media screen and (max-width: 50rem) {
+  .card p {
+    font-size: 1.75rem;
   }
-  .card-wide {
-    grid-column: span 2 / auto;
-  }
+}
+
+.card.hover h1::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.card.hover p {
+  color: black;
+}
+
+.card.hover p a {
+  color: #00beff;
+  pointer-events: auto;
+}
+
+.card.hover p::after {
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+
+.blue-long {
+  position: absolute;
+  right: 0;
+  top: 90vh;
+  height: calc(100% - 90vh);
+  width: 40rem;
+  background: #0c75e8;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+}
+
+.chess {
+  background-image: url("../images/projects/Chess.png");
+}
+
+.cube {
+  background-image: url("../images/projects/Cube.png");
+}
+
+.tetris {
+  background-image: url("../images/projects/Tetris.png");
+}
+
+.minesweeper {
+  background-image: url("../images/projects/Minesweeper.png");
+}
+
+.rl-cube {
+  background-image: url("../images/projects/RLCube.png");
+}
+
+.search {
+  background-image: url("../images/projects/Search.png");
+}
+
+.pushfight {
+  background-image: url("../images/projects/PushFight.png");
+}
+
+.website {
+  background-image: url("../images/projects/Website.png");
 }
 /*# sourceMappingURL=style.css.map */

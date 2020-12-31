@@ -237,9 +237,12 @@ nav ul li:hover a {
 
 .info-container {
   position: relative;
-  height: 90vh;
+  min-height: 90vh;
+  height: 100%;
   width: 100%;
-  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .blue-corner {
@@ -254,25 +257,21 @@ nav ul li:hover a {
 }
 
 .main-card {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  position: relative;
   width: 60%;
   height: 80%;
   min-width: 46rem;
+  margin: 2rem auto;
   background: white;
   border-radius: 5px;
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  overflow: hidden;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 10% (1fr)[3] 10%;
       grid-template-columns: 10% repeat(3, 1fr) 10%;
-  -ms-grid-rows: 10% 2fr (1fr)[4] 10%;
-      grid-template-rows: 10% 2fr repeat(4, 1fr) 10%;
+  -ms-grid-rows: 5rem 2fr (1fr)[4] 5rem;
+      grid-template-rows: 5rem 2fr repeat(4, 1fr) 5rem;
   /*
         button border animation logic
     */
@@ -483,14 +482,11 @@ nav ul li:hover a {
 
 @media screen and (max-width: 35rem) {
   nav {
-    height: 14vh;
+    min-height: 7.5rem;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .info-container {
-    height: 86vh;
   }
   .main-card {
     width: 90%;
@@ -498,8 +494,8 @@ nav ul li:hover a {
     min-width: 30rem;
     -ms-grid-columns: 10% (1fr)[3] 10%;
         grid-template-columns: 10% repeat(3, 1fr) 10%;
-    -ms-grid-rows: 5% 2fr (1fr)[4] 5%;
-        grid-template-rows: 5% 2fr repeat(4, 1fr) 5%;
+    -ms-grid-rows: 2.5rem 2fr (1fr)[4] 2.5rem;
+        grid-template-rows: 2.5rem 2fr repeat(4, 1fr) 2.5rem;
   }
   .main-card .headshot {
     width: 16rem;
@@ -529,7 +525,7 @@ nav ul li:hover a {
   position: relative;
   min-height: 90vh;
   height: 100%;
-  width: 100;
+  width: 100%;
 }
 
 .grid {

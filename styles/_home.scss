@@ -69,9 +69,10 @@ nav {
 
 .info-container {
     position: relative;
-    height: 90vh;
+    min-height: 90vh;
+    height: 100%;
     width: 100%;
-    overflow: hidden;
+    display: flex;
 }
 
 .blue-corner {
@@ -85,21 +86,18 @@ nav {
 }
 
 .main-card {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     width: 60%;
     height: 80%;
     min-width: 46rem;
+    margin: 2rem auto;
     background: white;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    overflow: hidden;
 
     display: grid;
     grid-template-columns: 10% repeat(3, 1fr) 10%;
-    grid-template-rows: 10% 2fr repeat(4, 1fr) 10%;
+    grid-template-rows: 5rem 2fr repeat(4, 1fr) 5rem;
 
     h2 {
         grid-row: 2/3;
@@ -257,13 +255,10 @@ nav {
 @media screen and (max-width: 35rem) {
     // vertical nav
     nav {
-        height: 14vh;
+        min-height: 7.5rem;
         flex-direction: column;
     }
-    // adjust info section
-    .info-container {
-        height: 86vh;
-    }
+
     // larger card
     .main-card {
         width: 90%;
@@ -271,7 +266,7 @@ nav {
         min-width: 30rem;
 
         grid-template-columns: 10% repeat(3, 1fr) 10%;
-        grid-template-rows: 5% 2fr repeat(4, 1fr) 5%;
+        grid-template-rows: 2.5rem 2fr repeat(4, 1fr) 2.5rem;
 
         .headshot {
             width: 16rem;

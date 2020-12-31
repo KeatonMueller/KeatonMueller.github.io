@@ -482,6 +482,12 @@ nav ul li:hover a {
     -ms-flex-pack: distribute;
         justify-content: space-around;
   }
+  nav h1 {
+    margin-top: 1rem;
+  }
+  nav ul {
+    margin-bottom: 0.5rem;
+  }
   .main-card {
     width: 90%;
     height: 90%;

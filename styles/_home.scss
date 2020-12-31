@@ -96,7 +96,7 @@ nav {
 
     display: grid;
     grid-template-columns: 10% repeat(3, 1fr) 10%;
-    grid-template-rows: 5rem 2fr repeat(4, 6rem) 5rem;
+    grid-template-rows: 5rem 20rem repeat(4, 6rem) 5rem;
 
     h2 {
         grid-row: 2/3;
@@ -275,7 +275,7 @@ nav {
         min-width: 30rem;
 
         grid-template-columns: 10% repeat(3, 1fr) 10%;
-        grid-template-rows: 2.5rem 2fr repeat(4, 1fr) 2.5rem;
+        grid-template-rows: 2.5rem 16rem repeat(4, 6rem) 2.5rem;
 
         .headshot {
             width: 16rem;

@@ -1,72 +1,3 @@
-header {
-    background: white;
-    position: sticky;
-    width: 100%;
-    top: 0;
-    z-index: 2;
-    overflow: hidden;
-}
-
-nav {
-    height: 10vh;
-    width: 80%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
-    padding: 1rem;
-
-    h1 {
-        min-width: 18rem;
-        flex: 3;
-        a {
-            text-decoration: none;
-            color: black;
-        }
-    }
-
-    ul {
-        min-width: 22rem;
-        display: flex;
-        justify-content: space-between;
-        flex: 1;
-        list-style: none;
-
-        li {
-            font-size: 1.5rem;
-            margin: 1rem;
-            position: relative;
-            a {
-                color: #8a8a8a;
-                transition: color 350ms;
-            }
-        }
-        li::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -2px;
-            width: 100%;
-            height: 2px;
-            background: $clr-primary-400;
-            transform-origin: center;
-            transform: scaleX(0);
-            transition: transform 350ms;
-        }
-        li:hover::after {
-            transform: scaleX(1);
-        }
-        li:hover a {
-            color: $clr-primary-400;
-        }
-    }
-}
-
-.selected {
-    color: $clr-primary-400;
-}
-
 .info-container {
     position: relative;
     min-height: 90vh;
@@ -251,24 +182,6 @@ nav {
 
 // adjustments for smaller screens
 @media screen and (max-width: 500px) {
-    // vertical nav
-    nav {
-        height: 8rem;
-        padding: 0;
-        h1 {
-            position: absolute;
-            left: 50%;
-            top: 1rem;
-            transform: translateX(-50%);
-        }
-        ul {
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-        }
-    }
-
     // larger card
     .main-card {
         width: 90%;

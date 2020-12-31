@@ -1,4 +1,4 @@
-import * as THREE from "../../js/three/three.module.js";
+import * as THREE from "https://unpkg.com/three@0.124.0/build/three.module.js";
 import { OrbitControls } from "../../js/three/OrbitControls.js";
 
 import Cube from "./Cube.js";

@@ -4,7 +4,7 @@ const elts = document.querySelectorAll(".card");
 // currently hovering element
 let hovering = undefined;
 
-// function to togger 'hover' class
+// function to toggle 'hover' class
 const toggleHover = (event) => {
     // touch events must disable mouse events to prevent double firing
     if (event.type === "touchstart") {

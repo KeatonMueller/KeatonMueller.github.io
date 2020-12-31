@@ -141,27 +141,60 @@
 }
 
 // set up background images
-.chess {
-    background-image: url("../images/Chess.png");
+// use webp if supported, otherwise fallback to jpg and png
+.no-js .chess,
+.no-webp .chess {
+    background-image: url("../images/Chess.jpg");
 }
-.cube {
+.webp .chess {
+    background-image: url("../images/Chess.webp");
+}
+.no-js .cube,
+.no-webplossless .cube {
     background-image: url("../images/Cube.png");
 }
-.tetris {
+.webplossless .cube {
+    background-image: url("../images/Cube.webp");
+}
+.no-js .tetris,
+.no-webplossless .tetris {
     background-image: url("../images/Tetris.png");
 }
-.minesweeper {
+.webplossless .tetris {
+    background-image: url("../images/Tetris.webp");
+}
+.no-js .minesweeper,
+.no-webplossless .minesweeper {
     background-image: url("../images/Minesweeper.png");
 }
-.rl-cube {
-    background-image: url("../images/RLCube.png");
+.webplossless .minesweeper {
+    background-image: url("../images/Minesweeper.webp");
 }
-.search {
+.no-js .rl-cube,
+.no-webp .rl-cube {
+    background-image: url("../images/RLCube.jpg");
+}
+.webp .rl-cube {
+    background-image: url("../images/RLCube.webp");
+}
+.no-js .search,
+.no-webplossless .search {
     background-image: url("../images/Search.png");
 }
-.pushfight {
+.webplossless .search {
+    background-image: url("../images/Search.webp");
+}
+.no-js .pushfight,
+.no-webplossless .pushfight {
     background-image: url("../images/PushFight.png");
 }
-.website {
-    background-image: url("../images/Website.png");
+.webplossless .pushfight {
+    background-image: url("../images/PushFight.webp");
+}
+.no-js .website,
+.no-webp .website {
+    background-image: url("../images/Website.jpg");
+}
+.webp .website {
+    background-image: url("../images/Website.webp");
 }

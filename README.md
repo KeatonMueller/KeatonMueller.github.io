@@ -1,4 +1,7 @@
-# website-v2
+# Personal Website
 
-This is a redesign of my personal website. I will deploy it using
-GitHub pages once I'm done.
+This is my personal website to showcase a bit of my work online.
+
+It's made with HTML, CSS, and JavaScript.
+
+You can visit the page here: https://keatonmueller.github.io/

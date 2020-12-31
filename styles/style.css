@@ -232,7 +232,7 @@ nav ul li:hover a {
 }
 
 .selected {
-  color: #0c75e8;
+  color: #00f5f2;
 }
 
 .info-container {
@@ -480,6 +480,11 @@ nav ul li:hover a {
         -ms-flex-direction: column;
             flex-direction: column;
     padding: 1rem;
+  }
+  nav h1 {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
   }
   .main-card {
     width: 90%;

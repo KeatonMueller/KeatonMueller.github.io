@@ -64,7 +64,7 @@ nav {
 }
 
 .selected {
-    color: $clr-primary-400;
+    color: $clr-primary-100;
 }
 
 .info-container {
@@ -256,6 +256,10 @@ nav {
         min-height: 8rem;
         flex-direction: column;
         padding: 1rem;
+
+        h1 {
+            flex: 1;
+        }
     }
 
     // larger card

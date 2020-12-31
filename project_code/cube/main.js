@@ -15,7 +15,7 @@ const axes = new Map([
 
 // get height of header
 const getHeaderSize = () => {
-    if (window.innerWidth <= 560) {
+    if (window.innerWidth <= 500) {
         return window.innerHeight * 0.14;
     }
     return window.innerHeight * 0.1;
@@ -23,7 +23,7 @@ const getHeaderSize = () => {
 
 // get height of window
 const getHeight = () => {
-    if (window.innerWidth <= 560) {
+    if (window.innerWidth <= 500) {
         return window.innerHeight * 0.86;
     }
     return window.innerHeight * 0.9;

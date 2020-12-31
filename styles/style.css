@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   position: relative;
   background: #f5f5f5;
@@ -332,7 +332,7 @@ nav ul li:hover a {
 .main-card a {
   font-size: 2rem;
   display: inline;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   position: relative;
   color: black;
   background-color: none;
@@ -344,13 +344,11 @@ nav ul li:hover a {
   color: #0c75e8;
 }
 
-.main-card .btn-contact {
+.main-card .btn-contact,
+.main-card .btn-projects {
   -ms-grid-row: 6;
   -ms-grid-row-span: 1;
   grid-row: 6/7;
-  -ms-grid-column: 3;
-  -ms-grid-column-span: 1;
-  grid-column: 3/4;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -363,23 +361,16 @@ nav ul li:hover a {
           align-items: center;
 }
 
+.main-card .btn-contact {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+}
+
 .main-card .btn-projects {
-  -ms-grid-row: 6;
-  -ms-grid-row-span: 1;
-  grid-row: 6/7;
   -ms-grid-column: 4;
   -ms-grid-column-span: 1;
   grid-column: 4/5;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .main-card .btn-projects a div::before,
@@ -620,7 +611,7 @@ nav ul li:hover a {
   color: transparent;
   z-index: 1;
   margin-right: 3rem;
-  padding: 1rem;
+  padding: 0 1rem 1rem;
   -webkit-transition: color 200ms 250ms;
   transition: color 200ms 250ms;
 }
@@ -640,7 +631,7 @@ nav ul li:hover a {
   right: -0.25rem;
   top: -0.75rem;
   bottom: -0.25rem;
-  background-color: #f5f5f5;
+  background-color: rgba(245, 245, 245, 0.9);
   z-index: -1;
   -webkit-transform: scaleY(0);
           transform: scaleY(0);

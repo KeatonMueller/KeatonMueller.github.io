@@ -77,7 +77,7 @@
         color: transparent;
         z-index: 1;
         margin-right: 3rem;
-        padding: 1rem;
+        padding: 0 1rem 1rem;
         transition: color 200ms 250ms;
 
         a {
@@ -94,7 +94,7 @@
         right: -0.25rem;
         top: -0.75rem;
         bottom: -0.25rem;
-        background-color: $clr-neutral-100;
+        background-color: rgba(245, 245, 245, 0.9);
         z-index: -1;
         transform: scaleY(0);
         transform-origin: top left;

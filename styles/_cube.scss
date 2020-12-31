@@ -4,7 +4,7 @@
 }
 
 // make sure height is exact to prevent scrolling on mobile
-@media screen and (max-width: 35rem) {
+@media screen and (max-width: 500px) {
     .three-container {
         height: 86vh;
     }

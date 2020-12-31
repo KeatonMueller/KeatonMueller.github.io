@@ -480,7 +480,7 @@ nav ul li:hover a {
   border-radius: 50%;
 }
 
-@media screen and (max-width: 35rem) {
+@media screen and (max-width: 500px) {
   nav {
     min-height: 7.5rem;
     -webkit-box-orient: vertical;
@@ -715,7 +715,7 @@ nav ul li:hover a {
   height: 90vh;
 }
 
-@media screen and (max-width: 35rem) {
+@media screen and (max-width: 500px) {
   .three-container {
     height: 86vh;
   }

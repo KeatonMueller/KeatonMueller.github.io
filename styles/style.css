@@ -45,11 +45,11 @@ a {
 }
 
 #logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(100%);
-          transform: translate(-50%, -50%) scale(100%);
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   width: 157px;
   height: 262px;
   -webkit-animation: fadeOut 0.25s linear forwards 1.35s;

@@ -29,6 +29,14 @@ const getHeight = () => {
     return window.innerHeight * 0.9;
 };
 
+// get tolerance for swipe actions (more tolerant on mobile)
+const getTolerance = () => {
+    if (window.innerWidth <= 500) {
+        return 0.1;
+    }
+    return 0.015;
+};
+
 const moveBuffer = [];
 let animating = false;
 
@@ -187,7 +195,7 @@ const onDocumentMouseMove = (event) => {
     if (!controls.enabled && chosenAxis == null) {
         delta.x = (event.offsetX / window.innerWidth) * 2 - 1 - mouse.x;
         delta.y = -(event.offsetY / getHeight()) * 2 + 1 - mouse.y;
-        if (delta.length() > 0.015) {
+        if (delta.length() > getTolerance()) {
             if (Math.abs(delta.x) > Math.abs(delta.y)) {
                 // console.log('going left/right')
                 chosenAxis = "x";

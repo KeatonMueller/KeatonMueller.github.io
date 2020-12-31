@@ -29,10 +29,16 @@ const toggleHover = (event) => {
     // if not found, use the parent
     if (!found) {
         elt = elt.parentElement;
-        event.preventDefault(); // stop hidden links from working
+        event.stopPropagation(); // stop hidden links from working
     }
     // toggle hover on .card element
     elt.classList.toggle("hover");
+
+    // enable links after animation finishes
+    setTimeout(() => {
+        elt.classList.toggle("active");
+    }, 500);
+
     // remove hover from previously hovered element
     if (hovering === undefined) {
         hovering = elt;
@@ -40,6 +46,7 @@ const toggleHover = (event) => {
         hovering = undefined;
     } else {
         hovering.classList.toggle("hover");
+        hovering.classList.toggle("active");
         hovering = elt;
     }
 };

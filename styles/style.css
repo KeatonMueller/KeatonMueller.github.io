@@ -656,12 +656,15 @@ nav ul li:hover a {
 
 .card.hover p a {
   color: #00beff;
-  pointer-events: auto;
 }
 
 .card.hover p::after {
   -webkit-transform: scaleY(1);
           transform: scaleY(1);
+}
+
+.card.hover.active p a {
+  pointer-events: auto;
 }
 
 .blue-long {

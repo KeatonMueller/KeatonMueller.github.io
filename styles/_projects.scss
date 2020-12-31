@@ -117,11 +117,16 @@
         color: black;
         a {
             color: $clr-primary-200;
-            pointer-events: auto;
         }
     }
     p::after {
         transform: scaleY(1);
+    }
+}
+
+.card.hover.active {
+    p a {
+        pointer-events: auto;
     }
 }
 

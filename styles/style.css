@@ -237,7 +237,6 @@ nav ul li:hover a {
 
 .info-container {
   position: relative;
-  min-height: 90vh;
   height: 100%;
   width: 100%;
   display: -webkit-box;
@@ -482,7 +481,7 @@ nav ul li:hover a {
 
 @media screen and (max-width: 500px) {
   nav {
-    min-height: 7.5rem;
+    min-height: 8rem;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;

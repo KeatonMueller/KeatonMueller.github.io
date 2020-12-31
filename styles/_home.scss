@@ -69,7 +69,7 @@ nav {
 
 .info-container {
     position: relative;
-    min-height: 90vh;
+    // min-height: 90vh;
     height: 100%;
     width: 100%;
     display: flex;
@@ -255,7 +255,7 @@ nav {
 @media screen and (max-width: 500px) {
     // vertical nav
     nav {
-        min-height: 7.5rem;
+        min-height: 8rem;
         flex-direction: column;
     }
 

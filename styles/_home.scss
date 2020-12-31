@@ -126,9 +126,10 @@ nav {
 
     a {
         font-size: 2rem;
-        display: inline;
-        padding: 0.5rem 1rem;
-        position: relative;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         color: black;
         background-color: none;
         transition: color 500ms;
@@ -142,9 +143,6 @@ nav {
     .btn-projects {
         grid-row: 6/7;
         position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
     .btn-contact {
         grid-column: 3/4;
@@ -176,14 +174,14 @@ nav {
     .btn-projects a::after,
     .btn-contact a::before,
     .btn-contact a::after {
-        width: 100%;
+        width: calc(100% + 2rem);
         height: 2px;
     }
     // top borders
     .btn-projects a::before,
     .btn-contact a::before {
-        top: 0;
-        left: 0;
+        top: -0.5rem;
+        left: -1rem;
         transform: scaleX(0.2);
         transform-origin: right;
     }
@@ -196,8 +194,8 @@ nav {
     // bottom borders
     .btn-projects a::after,
     .btn-contact a::after {
-        bottom: 0;
-        left: 0;
+        bottom: -0.5rem;
+        left: -1rem;
         transform: scaleX(0.2);
         transform-origin: left;
     }
@@ -214,13 +212,13 @@ nav {
     .btn-contact a div::before,
     .btn-contact a div::after {
         width: 2px;
-        height: 100%;
+        height: calc(100% + 1rem);
     }
     // left borders
     .btn-projects a div::before,
     .btn-contact a div::before {
-        top: 0;
-        left: 0;
+        top: -0.5rem;
+        left: -1rem;
         transform: scaleY(0.2);
         transform-origin: bottom;
     }
@@ -233,8 +231,8 @@ nav {
     // right borders
     .btn-projects a div::after,
     .btn-contact a div::after {
-        top: 0;
-        right: -1px;
+        top: -0.5rem;
+        right: calc(-1rem - 1px);
         transform: scaleY(0.2);
         transform-origin: top;
     }
@@ -279,12 +277,15 @@ nav {
 
         .btn-contact {
             grid-column: 2/3;
-            position: relative;
-            justify-content: left;
+            a {
+                left: 1rem;
+                transform: translateY(-50%);
+            }
         }
 
-        .btn-projects {
-            justify-content: right;
+        .btn-projects a {
+            right: 1rem;
+            transform: translateY(-50%);
         }
     }
 }

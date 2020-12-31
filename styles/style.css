@@ -329,9 +329,11 @@ nav ul li:hover a {
 
 .main-card a {
   font-size: 2rem;
-  display: inline;
-  padding: 0.5rem 1rem;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   color: black;
   background-color: none;
   -webkit-transition: color 500ms;
@@ -348,15 +350,6 @@ nav ul li:hover a {
   -ms-grid-row-span: 1;
   grid-row: 6/7;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .main-card .btn-contact {
@@ -394,14 +387,14 @@ nav ul li:hover a {
 .main-card .btn-projects a::after,
 .main-card .btn-contact a::before,
 .main-card .btn-contact a::after {
-  width: 100%;
+  width: calc(100% + 2rem);
   height: 2px;
 }
 
 .main-card .btn-projects a::before,
 .main-card .btn-contact a::before {
-  top: 0;
-  left: 0;
+  top: -0.5rem;
+  left: -1rem;
   -webkit-transform: scaleX(0.2);
           transform: scaleX(0.2);
   -webkit-transform-origin: right;
@@ -417,8 +410,8 @@ nav ul li:hover a {
 
 .main-card .btn-projects a::after,
 .main-card .btn-contact a::after {
-  bottom: 0;
-  left: 0;
+  bottom: -0.5rem;
+  left: -1rem;
   -webkit-transform: scaleX(0.2);
           transform: scaleX(0.2);
   -webkit-transform-origin: left;
@@ -437,13 +430,13 @@ nav ul li:hover a {
 .main-card .btn-contact a div::before,
 .main-card .btn-contact a div::after {
   width: 2px;
-  height: 100%;
+  height: calc(100% + 1rem);
 }
 
 .main-card .btn-projects a div::before,
 .main-card .btn-contact a div::before {
-  top: 0;
-  left: 0;
+  top: -0.5rem;
+  left: -1rem;
   -webkit-transform: scaleY(0.2);
           transform: scaleY(0.2);
   -webkit-transform-origin: bottom;
@@ -459,8 +452,8 @@ nav ul li:hover a {
 
 .main-card .btn-projects a div::after,
 .main-card .btn-contact a div::after {
-  top: 0;
-  right: -1px;
+  top: -0.5rem;
+  right: calc(-1rem - 1px);
   -webkit-transform: scaleY(0.2);
           transform: scaleY(0.2);
   -webkit-transform-origin: top;
@@ -510,15 +503,16 @@ nav ul li:hover a {
     -ms-grid-column: 2;
     -ms-grid-column-span: 1;
     grid-column: 2/3;
-    position: relative;
-    -webkit-box-pack: left;
-        -ms-flex-pack: left;
-            justify-content: left;
   }
-  .main-card .btn-projects {
-    -webkit-box-pack: right;
-        -ms-flex-pack: right;
-            justify-content: right;
+  .main-card .btn-contact a {
+    left: 1rem;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  .main-card .btn-projects a {
+    right: 1rem;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
   }
 }
 

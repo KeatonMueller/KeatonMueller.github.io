@@ -96,7 +96,7 @@ nav {
 
     display: grid;
     grid-template-columns: 10% repeat(3, 1fr) 10%;
-    grid-template-rows: 5rem 20rem repeat(4, 6rem) 5rem;
+    grid-template-rows: 5rem 20rem repeat(4, 7.5rem) 5rem;
 
     h2 {
         grid-row: 2/3;
@@ -117,14 +117,15 @@ nav {
         grid-column: 2/5;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         p {
-            font-size: 2rem;
+            font-size: 2.5rem;
         }
     }
 
-    a {
-        font-size: 2rem;
+    .btn-contact a,
+    .btn-projects a {
+        font-size: 2.5rem;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -133,8 +134,8 @@ nav {
         background-color: none;
         transition: color 500ms;
     }
-
-    a:hover {
+    .btn-contact a:hover,
+    .btn-projects a:hover {
         color: $clr-primary-400;
     }
 
@@ -275,7 +276,7 @@ nav {
         min-width: 30rem;
 
         grid-template-columns: 10% repeat(3, 1fr) 10%;
-        grid-template-rows: 2.5rem 16rem repeat(4, 6rem) 2.5rem;
+        grid-template-rows: 2.5rem 16rem repeat(4, 7.5rem) 2.5rem;
 
         .headshot {
             width: 16rem;
@@ -283,19 +284,32 @@ nav {
 
         .info {
             justify-content: space-evenly;
-        }
-
-        .btn-contact {
-            grid-column: 2/3;
-            a {
-                left: 1rem;
-                transform: translateY(-50%);
+            p {
+                font-size: 2rem;
             }
         }
 
+        .btn-contact a,
         .btn-projects a {
-            right: 1rem;
+            position: relative;
+            display: inline-block;
+            top: 50%;
+            left: auto;
             transform: translateY(-50%);
+            font-size: 2rem;
+        }
+        .btn-contact {
+            grid-column: 2/3;
+            text-align: left;
+            a {
+                margin-left: 1rem;
+            }
+        }
+        .btn-projects {
+            text-align: right;
+            a {
+                margin-right: 1rem;
+            }
         }
     }
 }

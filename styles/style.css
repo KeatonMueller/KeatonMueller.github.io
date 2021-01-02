@@ -909,7 +909,7 @@ footer address p.contact-info a {
   height: 215px;
 }
 
-.buttons.hover button {
+.buttons.hover button.active {
   opacity: 1;
   pointer-events: auto;
 }

@@ -7,6 +7,8 @@
 const elt = document.querySelector(".buttons");
 // another visible element that might get clicked
 const span = document.querySelector(".buttons span");
+// the buttons that must be deactivated when hidden
+const btns = document.querySelectorAll(".buttons button");
 
 // function to toggle 'hover' class
 const toggleHover = (event) => {
@@ -20,6 +22,12 @@ const toggleHover = (event) => {
     if (event.target !== elt && event.target !== span) return;
     // toggle hover on .buttons element
     elt.classList.toggle("hover");
+    // toggle active on all of the buttons after a delay
+    setTimeout(() => {
+        btns.forEach((btn) => {
+            btn.classList.toggle("active");
+        });
+    }, 250);
 };
 
 // add event listeners to the hoverable element

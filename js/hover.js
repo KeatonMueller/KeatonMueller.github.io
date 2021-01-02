@@ -1,3 +1,8 @@
+/**
+ * Turn hover effects on desktop into click effects on mobile for the
+ * /projects.html page
+ */
+
 // list of elements that replace hover with click
 const elts = document.querySelectorAll(".card");
 

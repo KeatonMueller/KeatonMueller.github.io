@@ -209,49 +209,6 @@ const searchIter = () => {
     return false;
 };
 
-const newAnimation = (newType) => () => {
-    if (!canvas) return;
-    prevSpot = null;
-    resetGrid();
-    queue = [startSpot];
-    openSet = new Set(queue);
-    closedSet.clear();
-    type = newType;
-    animateSearch = true;
-    clear = false;
-    loop();
-};
-
-const clearGrid = (clearAll) => () => {
-    if (!canvas) return;
-    prevSpot = null;
-    resetGrid();
-    animateSearch = false;
-    clear = true;
-    if (clearAll) {
-        for (let i = 0; i < numRows; i++) {
-            for (let j = 0; j < numCols; j++) {
-                if (grid[i][j].label === Values.WALL) {
-                    grid[i][j].label = Values.EMPTY;
-                }
-            }
-        }
-    }
-    draw();
-};
-
-const dfsBtn = document.getElementById("dfs");
-const bfsBtn = document.getElementById("bfs");
-const aStarBtn = document.getElementById("a*");
-const clearSearchBtn = document.getElementById("clearSearch");
-const clearAllBtn = document.getElementById("clearAll");
-
-dfsBtn.onclick = newAnimation("dfs");
-bfsBtn.onclick = newAnimation("bfs");
-aStarBtn.onclick = newAnimation("a*");
-clearSearchBtn.onclick = clearGrid(false);
-clearAllBtn.onclick = clearGrid(true);
-
 // heuristic function, currently just Manhattan distance
 const h = (row, col) => {
     return Math.abs(row - endRow) + Math.abs(col - endCol);
@@ -280,11 +237,10 @@ const highlightPath = (row, col, state) => {
 
 let dragging = Values.NONE;
 let clicked = [];
-const handleClick = () => {
-    // do nothing if animating or it's a right click
-    if (animateSearch || mouseButton === "right") {
+const handleClick = (e) => {
+    // do nothing if animating, a right click, or non-canvas element clicked
+    if (animateSearch || mouseButton === "right" || e.target !== canvas.canvas)
         return;
-    }
     // validate click location
     let row = Math.floor((mouseY - border) / boxSize);
     let col = Math.floor((mouseX - border) / boxSize);
@@ -353,19 +309,64 @@ const handleClick = () => {
         loop();
     }
 };
-const handleRelease = () => {
-    dragging = Values.NONE;
-};
 
-function mousePressed() {
-    handleClick();
+function mousePressed(e) {
+    handleClick(e);
 }
-function mouseDragged() {
-    handleClick();
+function mouseDragged(e) {
+    handleClick(e);
 }
 function mouseReleased() {
-    handleRelease();
+    dragging = Values.NONE;
 }
+
+/**
+ * Setup the button controls
+ */
+
+const newAnimation = (newType) => () => {
+    if (!canvas) return;
+    prevSpot = null;
+    resetGrid();
+    queue = [startSpot];
+    openSet = new Set(queue);
+    closedSet.clear();
+    type = newType;
+    animateSearch = true;
+    clear = false;
+    loop();
+};
+
+const clearGrid = (clearAll) => () => {
+    if (!canvas) return;
+    prevSpot = null;
+    resetGrid();
+    animateSearch = false;
+    clear = true;
+    if (clearAll) {
+        for (let i = 0; i < numRows; i++) {
+            for (let j = 0; j < numCols; j++) {
+                if (grid[i][j].label === Values.WALL) {
+                    grid[i][j].label = Values.EMPTY;
+                }
+            }
+        }
+    }
+    draw();
+};
+
+const buttonDiv = document.querySelector(".buttons");
+const dfsBtn = document.getElementById("dfs");
+const bfsBtn = document.getElementById("bfs");
+const aStarBtn = document.getElementById("a*");
+const clearSearchBtn = document.getElementById("clearSearch");
+const clearAllBtn = document.getElementById("clearAll");
+
+dfsBtn.onclick = newAnimation("dfs");
+bfsBtn.onclick = newAnimation("bfs");
+aStarBtn.onclick = newAnimation("a*");
+clearSearchBtn.onclick = clearGrid(false);
+clearAllBtn.onclick = clearGrid(true);
 
 function draw() {
     background("#f5f5f5");

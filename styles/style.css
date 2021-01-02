@@ -366,6 +366,7 @@ footer address p.contact-info a {
   display: flex;
   justify-self: right;
   width: 20rem;
+  height: 20rem;
 }
 
 .main-card .headshot img {
@@ -392,16 +393,17 @@ footer address p.contact-info a {
 
 .main-card .info p {
   font-size: 2.5rem;
+  line-height: 150%;
 }
 
 .main-card .btn-contact a,
 .main-card .btn-projects a {
   font-size: 2.5rem;
   position: absolute;
-  top: 50%;
+  bottom: 0;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   color: black;
   background-color: none;
   -webkit-transition: color 500ms;
@@ -536,6 +538,13 @@ footer address p.contact-info a {
   background-color: #0c75e8;
 }
 
+@media screen and (max-width: 880px) {
+  .main-card .headshot {
+    width: 19rem;
+    height: 19rem;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .main-card {
     width: 90%;
@@ -543,11 +552,12 @@ footer address p.contact-info a {
     min-width: 30rem;
     -ms-grid-columns: 10% (1fr)[3] 10%;
         grid-template-columns: 10% repeat(3, 1fr) 10%;
-    -ms-grid-rows: 2.5rem 16rem (7.5rem)[4] 2.5rem;
-        grid-template-rows: 2.5rem 16rem repeat(4, 7.5rem) 2.5rem;
+    -ms-grid-rows: 2rem 16rem (7.5rem)[4] 2rem;
+        grid-template-rows: 2rem 16rem repeat(4, 7.5rem) 2rem;
   }
   .main-card .headshot {
     width: 16rem;
+    height: 16rem;
   }
   .main-card .info {
     -webkit-box-pack: space-evenly;

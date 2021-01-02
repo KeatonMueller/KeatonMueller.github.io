@@ -1,6 +1,81 @@
-.info-container h1 {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+.contact-card {
+    position: relative;
+    width: 60%;
+    height: 100%;
+    // min-width: 46rem;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-bottom: 3rem;
+
+    h1 {
+        font-size: 3.5rem;
+        padding: 1rem;
+        margin: 2rem 3rem;
+    }
+
+    .fa {
+        font-size: 5rem;
+        color: black;
+        padding: 1rem;
+        margin-left: 10rem;
+        transition: color 300ms;
+    }
+    .fa:hover {
+        color: $clr-primary-400;
+    }
+    .github .fa:hover {
+        color: #0a66c2;
+    }
+    .linkedin .fa:hover {
+        color: #0a66c2;
+    }
+    .phone,
+    .github,
+    .linkedin,
+    .email {
+        position: relative;
+    }
+
+    .github .fa::after {
+        content: "GitHub";
+    }
+    .linkedin .fa::after {
+        content: "LinkedIn";
+    }
+    .email .fa::after {
+        content: "Email";
+    }
+    .phone .fa::after {
+        content: "+1 (914) 260-4235";
+    }
+
+    .fa::after {
+        position: absolute;
+        left: 18rem;
+        font-size: 2rem;
+        top: 50%;
+        font-family: "Sen", sans-serif;
+        transition: transform 300ms;
+        transform: translateY(-50%) scaleX(0);
+        transform-origin: left;
+    }
+    .fa:hover::after {
+        transform: translateY(-50%) scaleX(1);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .contact-card {
+        .fa {
+            margin-left: 3rem;
+        }
+        .fa::after {
+            left: 10rem;
+        }
+    }
 }

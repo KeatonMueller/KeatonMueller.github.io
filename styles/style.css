@@ -824,12 +824,106 @@ footer address p.contact-info a {
   background-image: url("../images/Website.webp");
 }
 
-.info-container h1 {
+.contact-card {
+  position: relative;
+  width: 60%;
+  height: 100%;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding-bottom: 3rem;
+}
+
+.contact-card h1 {
+  font-size: 3.5rem;
+  padding: 1rem;
+  margin: 2rem 3rem;
+}
+
+.contact-card .fa {
+  font-size: 5rem;
+  color: black;
+  padding: 1rem;
+  margin-left: 10rem;
+  -webkit-transition: color 300ms;
+  transition: color 300ms;
+}
+
+.contact-card .fa:hover {
+  color: #0c75e8;
+}
+
+.contact-card .github .fa:hover {
+  color: #0a66c2;
+}
+
+.contact-card .linkedin .fa:hover {
+  color: #0a66c2;
+}
+
+.contact-card .phone,
+.contact-card .github,
+.contact-card .linkedin,
+.contact-card .email {
+  position: relative;
+}
+
+.contact-card .github .fa::after {
+  content: "GitHub";
+}
+
+.contact-card .linkedin .fa::after {
+  content: "LinkedIn";
+}
+
+.contact-card .email .fa::after {
+  content: "Email";
+}
+
+.contact-card .phone .fa::after {
+  content: "+1 (914) 260-4235";
+}
+
+.contact-card .fa::after {
   position: absolute;
-  left: 50%;
+  left: 18rem;
+  font-size: 2rem;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  font-family: "Sen", sans-serif;
+  -webkit-transition: -webkit-transform 300ms;
+  transition: -webkit-transform 300ms;
+  transition: transform 300ms;
+  transition: transform 300ms, -webkit-transform 300ms;
+  -webkit-transform: translateY(-50%) scaleX(0);
+          transform: translateY(-50%) scaleX(0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.contact-card .fa:hover::after {
+  -webkit-transform: translateY(-50%) scaleX(1);
+          transform: translateY(-50%) scaleX(1);
+}
+
+@media screen and (max-width: 500px) {
+  .contact-card .fa {
+    margin-left: 3rem;
+  }
+  .contact-card .fa::after {
+    left: 10rem;
+  }
 }
 
 .three-container {

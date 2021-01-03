@@ -130,16 +130,6 @@
     }
 }
 
-.blue-long {
-    position: absolute;
-    right: 0;
-    top: 90vh;
-    height: calc(100% - 90vh);
-    width: 40rem;
-    background: $clr-primary-400;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
-}
-
 // set up background images
 // use webp if supported, otherwise fallback to jpg and png
 .no-js .chess,

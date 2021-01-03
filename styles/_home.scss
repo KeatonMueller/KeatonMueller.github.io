@@ -5,16 +5,6 @@
     display: flex;
 }
 
-.blue-corner {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 90vh;
-    width: 40rem;
-    background: $clr-primary-400;
-    clip-path: polygon(100% 50%, 100% 100%, 0 100%);
-}
-
 .main-card {
     position: relative;
     width: 60%;
@@ -68,13 +58,29 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        color: black;
-        background-color: none;
-        transition: color 500ms;
+        transition-property: background-color, color;
+        transition-duration: 300ms;
+        border-radius: 100rem;
+        padding: 0.5rem 1.5rem;
     }
-    .btn-contact a:hover,
+
+    .btn-contact a {
+        color: $clr-primary-300;
+        background-color: white;
+        border: 2px solid $clr-primary-300;
+    }
+    .btn-contact a:hover {
+        color: white;
+        background-color: $clr-primary-300;
+    }
+    .btn-projects a {
+        color: white;
+        background-color: $clr-primary-400;
+        border: 2px solid $clr-primary-400;
+    }
     .btn-projects a:hover {
-        color: $clr-primary-400;
+        background-color: $clr-primary-300;
+        border: 2px solid $clr-primary-300;
     }
 
     .btn-contact,
@@ -87,98 +93,6 @@
     }
     .btn-projects {
         grid-column: 4/5;
-    }
-
-    /*
-        button border animation logic
-    */
-    // all borders
-    .btn-projects a div::before,
-    .btn-projects a div::after,
-    .btn-projects a::before,
-    .btn-projects a::after,
-    .btn-contact a div::before,
-    .btn-contact a div::after,
-    .btn-contact a::before,
-    .btn-contact a::after {
-        content: "";
-        position: absolute;
-        transition-duration: 500ms;
-        transition-property: transform background-color;
-        background-color: black;
-    }
-    // top and bottom borders
-    .btn-projects a::before,
-    .btn-projects a::after,
-    .btn-contact a::before,
-    .btn-contact a::after {
-        width: calc(100% + 2rem);
-        height: 2px;
-    }
-    // top borders
-    .btn-projects a::before,
-    .btn-contact a::before {
-        top: -0.5rem;
-        left: -1rem;
-        transform: scaleX(0.2);
-        transform-origin: right;
-    }
-    // top border hover
-    .btn-projects a:hover::before,
-    .btn-contact a:hover::before {
-        transform: translateX(-80%) scaleX(0.2);
-        background-color: $clr-primary-400;
-    }
-    // bottom borders
-    .btn-projects a::after,
-    .btn-contact a::after {
-        bottom: -0.5rem;
-        left: -1rem;
-        transform: scaleX(0.2);
-        transform-origin: left;
-    }
-    // bottom border hover
-    .btn-projects a:hover::after,
-    .btn-contact a:hover::after {
-        transform: translateX(80%) scaleX(0.2);
-        background-color: $clr-primary-400;
-    }
-
-    // left and right borders
-    .btn-projects a div::before,
-    .btn-projects a div::after,
-    .btn-contact a div::before,
-    .btn-contact a div::after {
-        width: 2px;
-        height: calc(100% + 1rem);
-    }
-    // left borders
-    .btn-projects a div::before,
-    .btn-contact a div::before {
-        top: -0.5rem;
-        left: -1rem;
-        transform: scaleY(0.2);
-        transform-origin: bottom;
-    }
-    // left border hover
-    .btn-projects a:hover div::before,
-    .btn-contact a:hover div::before {
-        transform: translateY(-80%) scaleY(0.2);
-        background-color: $clr-primary-400;
-    }
-    // right borders
-    .btn-projects a div::after,
-    .btn-contact a div::after {
-        top: -0.5rem;
-        right: calc(-1rem - 1px);
-        transform: scaleY(0.2);
-        transform-origin: top;
-    }
-    // bottom border hover
-    .btn-projects a:hover div::after,
-    .btn-contact a:hover div::after {
-        transform: translateY(80%) scaleY(0.2);
-        background-color: $clr-primary-400;
     }
 }
 

@@ -46,6 +46,28 @@ a {
   text-decoration: none;
 }
 
+.blue-corner {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 90vh;
+  width: 40rem;
+  background: #0c75e8;
+  -webkit-clip-path: polygon(100% 50%, 100% 100%, 0 100%);
+          clip-path: polygon(100% 50%, 100% 100%, 0 100%);
+}
+
+.blue-long {
+  position: absolute;
+  right: 0;
+  top: 90vh;
+  height: calc(100% - 90vh);
+  width: 40rem;
+  background: #0c75e8;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+}
+
 header {
   background: white;
   position: -webkit-sticky;
@@ -84,6 +106,10 @@ nav h1 {
 nav h1 a {
   text-decoration: none;
   color: black;
+}
+
+nav h1 a span {
+  color: #0c75e8;
 }
 
 nav ul {
@@ -307,17 +333,6 @@ footer address p.contact-info a {
   display: flex;
 }
 
-.blue-corner {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 90vh;
-  width: 40rem;
-  background: #0c75e8;
-  -webkit-clip-path: polygon(100% 50%, 100% 100%, 0 100%);
-          clip-path: polygon(100% 50%, 100% 100%, 0 100%);
-}
-
 .main-card {
   position: relative;
   width: 60%;
@@ -334,9 +349,6 @@ footer address p.contact-info a {
       grid-template-columns: 10% repeat(3, 1fr) 10%;
   -ms-grid-rows: 5rem 20rem (7.5rem)[4] 5rem;
       grid-template-rows: 5rem 20rem repeat(4, 7.5rem) 5rem;
-  /*
-        button border animation logic
-    */
 }
 
 .main-card h2 {
@@ -405,15 +417,34 @@ footer address p.contact-info a {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  color: black;
-  background-color: none;
-  -webkit-transition: color 500ms;
-  transition: color 500ms;
+  -webkit-transition-property: background-color, color;
+  transition-property: background-color, color;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  border-radius: 100rem;
+  padding: 0.5rem 1.5rem;
 }
 
-.main-card .btn-contact a:hover,
+.main-card .btn-contact a {
+  color: #3d91ed;
+  background-color: white;
+  border: 2px solid #3d91ed;
+}
+
+.main-card .btn-contact a:hover {
+  color: white;
+  background-color: #3d91ed;
+}
+
+.main-card .btn-projects a {
+  color: white;
+  background-color: #0c75e8;
+  border: 2px solid #0c75e8;
+}
+
 .main-card .btn-projects a:hover {
-  color: #0c75e8;
+  background-color: #3d91ed;
+  border: 2px solid #3d91ed;
 }
 
 .main-card .btn-contact,
@@ -434,109 +465,6 @@ footer address p.contact-info a {
   -ms-grid-column: 4;
   -ms-grid-column-span: 1;
   grid-column: 4/5;
-}
-
-.main-card .btn-projects a div::before,
-.main-card .btn-projects a div::after,
-.main-card .btn-projects a::before,
-.main-card .btn-projects a::after,
-.main-card .btn-contact a div::before,
-.main-card .btn-contact a div::after,
-.main-card .btn-contact a::before,
-.main-card .btn-contact a::after {
-  content: "";
-  position: absolute;
-  -webkit-transition-duration: 500ms;
-          transition-duration: 500ms;
-  -webkit-transition-property: -webkit-transform background-color;
-  transition-property: -webkit-transform background-color;
-  transition-property: transform background-color;
-  transition-property: transform background-color, -webkit-transform background-color;
-  background-color: black;
-}
-
-.main-card .btn-projects a::before,
-.main-card .btn-projects a::after,
-.main-card .btn-contact a::before,
-.main-card .btn-contact a::after {
-  width: calc(100% + 2rem);
-  height: 2px;
-}
-
-.main-card .btn-projects a::before,
-.main-card .btn-contact a::before {
-  top: -0.5rem;
-  left: -1rem;
-  -webkit-transform: scaleX(0.2);
-          transform: scaleX(0.2);
-  -webkit-transform-origin: right;
-          transform-origin: right;
-}
-
-.main-card .btn-projects a:hover::before,
-.main-card .btn-contact a:hover::before {
-  -webkit-transform: translateX(-80%) scaleX(0.2);
-          transform: translateX(-80%) scaleX(0.2);
-  background-color: #0c75e8;
-}
-
-.main-card .btn-projects a::after,
-.main-card .btn-contact a::after {
-  bottom: -0.5rem;
-  left: -1rem;
-  -webkit-transform: scaleX(0.2);
-          transform: scaleX(0.2);
-  -webkit-transform-origin: left;
-          transform-origin: left;
-}
-
-.main-card .btn-projects a:hover::after,
-.main-card .btn-contact a:hover::after {
-  -webkit-transform: translateX(80%) scaleX(0.2);
-          transform: translateX(80%) scaleX(0.2);
-  background-color: #0c75e8;
-}
-
-.main-card .btn-projects a div::before,
-.main-card .btn-projects a div::after,
-.main-card .btn-contact a div::before,
-.main-card .btn-contact a div::after {
-  width: 2px;
-  height: calc(100% + 1rem);
-}
-
-.main-card .btn-projects a div::before,
-.main-card .btn-contact a div::before {
-  top: -0.5rem;
-  left: -1rem;
-  -webkit-transform: scaleY(0.2);
-          transform: scaleY(0.2);
-  -webkit-transform-origin: bottom;
-          transform-origin: bottom;
-}
-
-.main-card .btn-projects a:hover div::before,
-.main-card .btn-contact a:hover div::before {
-  -webkit-transform: translateY(-80%) scaleY(0.2);
-          transform: translateY(-80%) scaleY(0.2);
-  background-color: #0c75e8;
-}
-
-.main-card .btn-projects a div::after,
-.main-card .btn-contact a div::after {
-  top: -0.5rem;
-  right: calc(-1rem - 1px);
-  -webkit-transform: scaleY(0.2);
-          transform: scaleY(0.2);
-  -webkit-transform-origin: top;
-          transform-origin: top;
-}
-
-.main-card .btn-projects a:hover div::after,
-.main-card .btn-contact a:hover div::after {
-  -webkit-transform: translateY(80%) scaleY(0.2);
-          transform: translateY(80%) scaleY(0.2);
-  background-color: #0c75e8;
 }
 
 @media screen and (max-width: 880px) {
@@ -741,17 +669,6 @@ footer address p.contact-info a {
   pointer-events: auto;
 }
 
-.blue-long {
-  position: absolute;
-  right: 0;
-  top: 90vh;
-  height: calc(100% - 90vh);
-  width: 40rem;
-  background: #0c75e8;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
-          clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
-}
-
 .no-js .chess,
 .no-webp .chess {
   background-image: url("../images/Chess.jpg");
@@ -852,11 +769,21 @@ footer address p.contact-info a {
   margin: 2rem 3rem;
 }
 
+.contact-card .icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .contact-card .fa {
   font-size: 5rem;
   color: black;
   padding: 1rem;
-  margin-left: 10rem;
+  margin-left: 3rem;
   -webkit-transition: color 300ms;
   transition: color 300ms;
 }
@@ -898,7 +825,7 @@ footer address p.contact-info a {
 
 .contact-card .fa::after {
   position: absolute;
-  left: 18rem;
+  left: 10rem;
   font-size: 2rem;
   top: 50%;
   font-family: "Sen", sans-serif;
@@ -917,12 +844,32 @@ footer address p.contact-info a {
           transform: translateY(-50%) scaleX(1);
 }
 
-@media screen and (max-width: 500px) {
-  .contact-card .fa {
-    margin-left: 3rem;
+@media screen and (min-width: 800px) {
+  .contact-card .icons {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
   }
-  .contact-card .fa::after {
-    left: 10rem;
+  .contact-card .icons .fa {
+    margin-left: 0;
+    margin-bottom: 3rem;
+  }
+  .contact-card .icons .fa::after {
+    left: 50%;
+    top: 7rem;
+    -webkit-transform: translateX(-50%) scaleY(0);
+            transform: translateX(-50%) scaleY(0);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    font-weight: lighter;
+  }
+  .contact-card .icons .fa:hover::after {
+    -webkit-transform: translateX(-50%) scaleY(1);
+            transform: translateX(-50%) scaleY(1);
   }
 }
 

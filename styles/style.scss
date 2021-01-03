@@ -4,6 +4,7 @@
 $anim-time: 1.2s;
 $clr-primary-100: #00f5f2;
 $clr-primary-200: #00beff;
+$clr-primary-300: #3d91ed;
 $clr-primary-400: #0c75e8;
 $clr-primary-600: #0038ff;
 $clr-primary-800: #0b00f5;
@@ -53,6 +54,26 @@ a {
     text-decoration: none;
 }
 
+.blue-corner {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 90vh;
+    width: 40rem;
+    background: $clr-primary-400;
+    clip-path: polygon(100% 50%, 100% 100%, 0 100%);
+}
+
+.blue-long {
+    position: absolute;
+    right: 0;
+    top: 90vh;
+    height: calc(100% - 90vh);
+    width: 40rem;
+    background: $clr-primary-400;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+}
+
 header {
     background: white;
     position: sticky;
@@ -78,6 +99,9 @@ nav {
         a {
             text-decoration: none;
             color: black;
+            span {
+                color: $clr-primary-400;
+            }
         }
     }
 

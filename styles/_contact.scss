@@ -18,11 +18,16 @@
         margin: 2rem 3rem;
     }
 
+    .icons {
+        display: flex;
+        flex-direction: column;
+    }
+
     .fa {
         font-size: 5rem;
         color: black;
         padding: 1rem;
-        margin-left: 10rem;
+        margin-left: 3rem;
         transition: color 300ms;
     }
     .fa:hover {
@@ -56,7 +61,7 @@
 
     .fa::after {
         position: absolute;
-        left: 18rem;
+        left: 10rem;
         font-size: 2rem;
         top: 50%;
         font-family: "Sen", sans-serif;
@@ -69,13 +74,27 @@
     }
 }
 
-@media screen and (max-width: 500px) {
-    .contact-card {
+// change to horizontal on medium to large screens
+@media screen and (min-width: 800px) {
+    .contact-card .icons {
+        flex-direction: row;
+        justify-content: space-evenly;
+
         .fa {
-            margin-left: 3rem;
+            margin-left: 0;
+            margin-bottom: 3rem;
         }
+
         .fa::after {
-            left: 10rem;
+            left: 50%;
+            top: 7rem;
+            transform: translateX(-50%) scaleY(0);
+            transform-origin: top;
+            font-weight: lighter;
+        }
+
+        .fa:hover::after {
+            transform: translateX(-50%) scaleY(1);
         }
     }
 }

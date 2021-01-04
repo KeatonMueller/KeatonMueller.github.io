@@ -962,17 +962,21 @@ footer address p.contact-info a {
 }
 
 #search-grid .box.empty.visited {
-  background-color: #00f5f2;
+  background-color: #b8fffd;
 }
 
 #search-grid .box.empty.path {
-  background-color: #ff6f00;
-  z-index: 10;
+  background-color: #ffe100;
 }
 
 #search-grid .box.pulse {
   -webkit-animation: pulse 300ms ease-in forwards;
           animation: pulse 300ms ease-in forwards;
+}
+
+#search-grid .box.empty.visited.pulse {
+  -webkit-animation: pulse-after 300ms ease-in forwards;
+          animation: pulse-after 300ms ease-in forwards;
 }
 
 @-webkit-keyframes pulse {
@@ -1002,6 +1006,48 @@ footer address p.contact-info a {
   to {
     -webkit-transform: scale(1);
             transform: scale(1);
+  }
+}
+
+@-webkit-keyframes pulse-after {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    background-color: #00f5f2;
+  }
+  15% {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  75% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    background-color: #b8fffd;
+  }
+}
+
+@keyframes pulse-after {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    background-color: #00f5f2;
+  }
+  15% {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  75% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    background-color: #b8fffd;
   }
 }
 

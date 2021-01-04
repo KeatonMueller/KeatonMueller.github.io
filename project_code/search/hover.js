@@ -4,13 +4,16 @@
  */
 
 // element to replace hover with click
-const elt = document.querySelector(".buttons");
+const elt = document.getElementById("search-buttons");
 // another visible element that might get clicked
-const span = document.querySelector(".buttons span");
+const span = document.querySelector("#search-buttons span");
 // the buttons that must be deactivated when hidden
-const btns = document.querySelectorAll(".buttons button");
+const btns = document.querySelectorAll("#search-buttons button");
 
-// function to toggle 'hover' class
+/**
+ * Toggle 'hover' class on button div
+ * @param {Event} event Pointer event
+ */
 const toggleHover = (event) => {
     // touch events must disable mouse events to prevent double firing
     if (event.type === "touchstart") {

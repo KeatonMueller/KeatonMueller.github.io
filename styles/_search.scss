@@ -1,9 +1,102 @@
-.search {
-    width: 100%;
-    height: 100%;
+#search-content {
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-.buttons button {
+// adjust for taller nav on smaller screens
+@media screen and (max-width: 500px) {
+    #search-content {
+        height: calc(100vh - 8rem);
+    }
+}
+
+.no-js #search-grid::after {
+    content: "You must enable JavaScript to view this";
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#search-grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    gap: 2px;
+    background-color: #a4a4a4;
+
+    grid-template-rows: repeat(auto-fill, minmax(16px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(16px, 1fr));
+}
+
+#search-grid .box {
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+}
+
+#search-grid .box.empty {
+    background-color: #f5f5f5;
+}
+
+#search-grid .box.start {
+    background-color: #0c75e8;
+}
+
+#search-grid .box.end {
+    background-color: #f00;
+}
+
+#search-grid .box.wall {
+    background-color: #000;
+}
+
+#search-grid .box.empty.visited {
+    background-color: #00f5f2;
+}
+
+#search-grid .box.empty.path {
+    background-color: #ff6f00;
+    z-index: 10;
+}
+
+#search-grid .box.pulse {
+    animation: pulse 300ms ease-in forwards;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.4);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+#search-buttons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(#484848, 0.8);
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    height: 50px;
+    transition-property: width, height;
+    transition-duration: 350ms;
+}
+
+#search-buttons button {
     display: inline-block;
     background-color: #f5f5f5;
     font-size: 15px;
@@ -18,48 +111,35 @@
     pointer-events: none;
 }
 
-#clearSearch {
-    margin-top: 20px;
-}
-
-.buttons button:hover {
-    background-color: #0c75e8;
-    color: white;
-}
-
-.buttons span {
+#search-buttons span {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
     font-size: 20px;
+    pointer-events: none;
 }
 
-.buttons {
-    position: absolute;
-    left: 0;
-    z-index: 1;
-    background-color: rgba($clr-neutral-800, 0.8);
-    padding: 5px 10px;
-    display: flex;
-    flex-direction: column;
-    width: 50px;
-    height: 50px;
-    transition-property: width, height;
-    transition-duration: 350ms;
+#search-buttons #clearSearch {
+    margin-top: 20px;
 }
 
-.buttons.hover {
+#search-buttons.hover {
     width: 150px;
     height: 215px;
 }
 
-.buttons.hover button.active {
+#search-buttons.hover span {
+    opacity: 0;
+}
+
+#search-buttons.hover button.active {
     opacity: 1;
     pointer-events: auto;
 }
 
-.buttons.hover span {
-    opacity: 0;
+#search-buttons button:hover {
+    background-color: #0c75e8;
+    color: white;
 }

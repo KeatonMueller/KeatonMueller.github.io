@@ -6,8 +6,12 @@
         <title>Search</title>
         <link rel="stylesheet" href="styles/style.css" />
 
-        <!-- p5.js -->
-        <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+        <script defer src="./project_code/search/hover.js"></script>
+        <script
+            defer
+            src="./project_code/search/index.js"
+            type="module"
+        ></script>
 
         <!-- detect if javascript is enabled -->
         <script>
@@ -52,8 +56,8 @@
                 </ul>
             </nav>
         </header>
-        <div class="search">
-            <div class="buttons">
+        <div id="search-content">
+            <div id="search-buttons">
                 <span>>></span>
                 <button id="dfs">DFS</button>
                 <button id="bfs">BFS</button>
@@ -61,10 +65,7 @@
                 <button id="clearSearch">Clear Search</button>
                 <button id="clearAll">Clear All</button>
             </div>
-            <!-- p5.js targets the `main` tag -->
-            <main></main>
+            <div id="search-grid"></div>
         </div>
-        <script src="project_code/search/sketch.js"></script>
-        <script src="project_code/search/hover.js"></script>
     </body>
 </html>

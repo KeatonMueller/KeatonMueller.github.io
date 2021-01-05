@@ -425,26 +425,17 @@ footer address p.contact-info a {
   padding: 0.5rem 1.5rem;
 }
 
+.main-card .btn-projects a,
 .main-card .btn-contact a {
-  color: #3d91ed;
+  color: #0c75e8;
   background-color: white;
-  border: 2px solid #3d91ed;
-}
-
-.main-card .btn-contact a:hover {
-  color: white;
-  background-color: #3d91ed;
-}
-
-.main-card .btn-projects a {
-  color: white;
-  background-color: #0c75e8;
   border: 2px solid #0c75e8;
 }
 
-.main-card .btn-projects a:hover {
-  background-color: #3d91ed;
-  border: 2px solid #3d91ed;
+.main-card .btn-projects a:hover,
+.main-card .btn-contact a:hover {
+  color: white;
+  background-color: #0c75e8;
 }
 
 .main-card .btn-contact,

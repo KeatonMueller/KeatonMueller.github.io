@@ -64,23 +64,16 @@
         padding: 0.5rem 1.5rem;
     }
 
+    .btn-projects a,
     .btn-contact a {
-        color: $clr-primary-300;
+        color: $clr-primary-400;
         background-color: white;
-        border: 2px solid $clr-primary-300;
-    }
-    .btn-contact a:hover {
-        color: white;
-        background-color: $clr-primary-300;
-    }
-    .btn-projects a {
-        color: white;
-        background-color: $clr-primary-400;
         border: 2px solid $clr-primary-400;
     }
-    .btn-projects a:hover {
-        background-color: $clr-primary-300;
-        border: 2px solid $clr-primary-300;
+    .btn-projects a:hover,
+    .btn-contact a:hover {
+        color: white;
+        background-color: $clr-primary-400;
     }
 
     .btn-contact,

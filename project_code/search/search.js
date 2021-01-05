@@ -17,6 +17,8 @@ export default class Search {
         this.queue = []; // queue/stack for BFS/DFS
         this.openSet = new Set(); // open set for A*
         this.closedSet = new Set(); // closed set for A*
+        this.gScores = {}; // gScore map for A*
+        this.fScores = {}; // fScore map for A*
         this.prev = {}; // previous map for paths
         this.type = null; // type of search being performed
         this.iters = 0; // iterations left for current tick
@@ -32,10 +34,10 @@ export default class Search {
         const col = parseInt(box.dataset.col);
         let r, c;
         for (const [deltaR, deltaC] of [
-            [-1, 0],
-            [1, 0],
             [0, -1],
             [0, 1],
+            [1, 0],
+            [-1, 0],
         ]) {
             r = row + deltaR;
             c = col + deltaC;
@@ -58,14 +60,14 @@ export default class Search {
             // reset scores for each box
             boxMap.grid.forEach((gridRow) => {
                 gridRow.forEach((box) => {
-                    box.dataset.gScore = Infinity;
-                    box.dataset.fScore = Infinity;
+                    this.gScores[box.id] = Infinity;
+                    this.fScores[box.id] = Infinity;
                 });
             });
 
             // set scores for starting box
-            boxMap.start.dataset.gScore = 0;
-            boxMap.start.dataset.fScore = this.h(boxMap.start);
+            this.gScores[boxMap.start.id] = 0;
+            this.fScores[boxMap.start.id] = this.h(boxMap.start);
             this.openSet = new Set([boxMap.start]);
             this.closedSet.clear();
         }
@@ -210,8 +212,7 @@ export default class Search {
         const box = [...this.openSet].reduce((val, candidate) => {
             if (
                 val === null ||
-                parseFloat(candidate.dataset.fScore) <
-                    parseFloat(val.dataset.fScore)
+                this.fScores[candidate.id] < this.fScores[val.id]
             ) {
                 return candidate;
             }
@@ -232,11 +233,11 @@ export default class Search {
         this.getNeighbors(box).forEach((neighbor) => {
             if (neighbor.classList.contains(Type.WALL)) return;
             if (this.closedSet.has(neighbor)) return;
-            const tentativeScore = parseFloat(box.dataset.gScore) + 1;
-            if (tentativeScore < parseFloat(neighbor.dataset.gScore)) {
+            const tentativeScore = this.gScores[box.id] + 1;
+            if (tentativeScore < this.gScores[neighbor.id]) {
                 this.prev[neighbor.id] = box;
-                neighbor.dataset.gScore = tentativeScore;
-                neighbor.dataset.fScore = tentativeScore + this.h(neighbor);
+                this.gScores[neighbor.id] = tentativeScore;
+                this.fScores[neighbor.id] = tentativeScore + this.h(neighbor);
                 this.openSet.add(neighbor);
             }
         });

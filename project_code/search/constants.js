@@ -44,7 +44,7 @@ const SearchType = {
 };
 
 const actualBoxSize = 16; // minimum pixel width/height of each box
-const gap = 2; // gap between grid areas
+const gap = 1; // gap between grid areas
 const BOX_SIZE = actualBoxSize + gap; // size each box takes up on the screen
 
 // delay between search ticks (in milliseconds)

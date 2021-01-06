@@ -786,7 +786,6 @@ footer address p.contact-info a {
   height: 100%;
 }
 
-.contact-card .icons .phone::after,
 .contact-card .icons div a::after {
   font-size: 2rem;
   white-space: nowrap;
@@ -808,7 +807,6 @@ footer address p.contact-info a {
           transition-timing-function: ease-in-out;
 }
 
-.contact-card .icons .phone:hover::after,
 .contact-card .icons div:hover a::after {
   border-right: 4px solid black;
 }
@@ -873,11 +871,11 @@ footer address p.contact-info a {
   grid-column: 2/3;
 }
 
-.contact-card .icons .phone::after {
+.contact-card .icons .phone a::after {
   content: "+1 (914) 260-4235";
 }
 
-.contact-card .icons .phone:hover::after {
+.contact-card .icons .phone:hover a::after {
   width: 17.5rem;
 }
 

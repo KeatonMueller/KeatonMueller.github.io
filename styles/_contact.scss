@@ -37,8 +37,6 @@
             }
         }
 
-        // ::after is on <a> for all icons except for .phone (which has no <a>)
-        .phone::after,
         div a::after {
             font-size: 2rem;
             white-space: nowrap;
@@ -55,7 +53,7 @@
             transition-duration: 500ms;
             transition-timing-function: ease-in-out;
         }
-        .phone:hover::after,
+
         div:hover a::after {
             border-right: 4px solid black;
         }
@@ -97,10 +95,10 @@
             grid-row: 3/4;
             grid-column: 2/3;
 
-            &::after {
+            a::after {
                 content: "+1 (914) 260-4235";
             }
-            &:hover::after {
+            &:hover a::after {
                 width: 17.5rem;
             }
         }

@@ -37,13 +37,16 @@
             }
         }
 
-        div::after {
+        // ::after is on <a> for all icons except for .phone (which has no <a>)
+        .phone::after,
+        div a::after {
             font-size: 2rem;
             white-space: nowrap;
             position: absolute;
             top: 50%;
             left: 6rem;
             transform: translateY(-50%);
+            pointer-events: all;
             border-right: 4px solid $clr-primary-400;
             color: $clr-primary-400;
             overflow: hidden;
@@ -52,17 +55,18 @@
             transition-duration: 500ms;
             transition-timing-function: ease-in-out;
         }
-        div:hover::after {
+        .phone:hover::after,
+        div:hover a::after {
             border-right: 4px solid black;
         }
 
         .github {
             grid-row: 1/2;
             grid-column: 1/2;
-            &::after {
+            a::after {
                 content: "GitHub";
             }
-            &:hover::after {
+            &:hover a::after {
                 width: 7.5rem;
             }
         }
@@ -70,10 +74,10 @@
         .linkedin {
             grid-row: 1/2;
             grid-column: 2/3;
-            &::after {
+            a::after {
                 content: "LinkedIn";
             }
-            &:hover::after {
+            &:hover a::after {
                 width: 9.5rem;
             }
         }
@@ -81,10 +85,10 @@
         .email {
             grid-row: 3/4;
             grid-column: 1/2;
-            &::after {
+            a::after {
                 content: "Email";
             }
-            &:hover::after {
+            &:hover a::after {
                 width: 6.5rem;
             }
         }

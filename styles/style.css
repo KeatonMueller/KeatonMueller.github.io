@@ -786,7 +786,8 @@ footer address p.contact-info a {
   height: 100%;
 }
 
-.contact-card .icons div::after {
+.contact-card .icons .phone::after,
+.contact-card .icons div a::after {
   font-size: 2rem;
   white-space: nowrap;
   position: absolute;
@@ -794,6 +795,7 @@ footer address p.contact-info a {
   left: 6rem;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+  pointer-events: all;
   border-right: 4px solid #0c75e8;
   color: #0c75e8;
   overflow: hidden;
@@ -806,7 +808,8 @@ footer address p.contact-info a {
           transition-timing-function: ease-in-out;
 }
 
-.contact-card .icons div:hover::after {
+.contact-card .icons .phone:hover::after,
+.contact-card .icons div:hover a::after {
   border-right: 4px solid black;
 }
 
@@ -819,11 +822,11 @@ footer address p.contact-info a {
   grid-column: 1/2;
 }
 
-.contact-card .icons .github::after {
+.contact-card .icons .github a::after {
   content: "GitHub";
 }
 
-.contact-card .icons .github:hover::after {
+.contact-card .icons .github:hover a::after {
   width: 7.5rem;
 }
 
@@ -836,11 +839,11 @@ footer address p.contact-info a {
   grid-column: 2/3;
 }
 
-.contact-card .icons .linkedin::after {
+.contact-card .icons .linkedin a::after {
   content: "LinkedIn";
 }
 
-.contact-card .icons .linkedin:hover::after {
+.contact-card .icons .linkedin:hover a::after {
   width: 9.5rem;
 }
 
@@ -853,11 +856,11 @@ footer address p.contact-info a {
   grid-column: 1/2;
 }
 
-.contact-card .icons .email::after {
+.contact-card .icons .email a::after {
   content: "Email";
 }
 
-.contact-card .icons .email:hover::after {
+.contact-card .icons .email:hover a::after {
   width: 6.5rem;
 }
 

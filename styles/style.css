@@ -80,6 +80,7 @@ header {
 
 nav {
   height: 10vh;
+  min-height: 6rem;
   width: 80%;
   margin: auto;
   display: -webkit-box;
@@ -172,6 +173,7 @@ nav ul li:hover a {
 footer {
   position: relative;
   height: 10vh;
+  min-height: 6rem;
   width: 100vw;
   background: #484848;
   margin-top: auto;

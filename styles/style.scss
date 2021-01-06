@@ -85,6 +85,7 @@ header {
 
 nav {
     height: 10vh;
+    min-height: 6rem;
     width: 80%;
     margin: auto;
     display: flex;
@@ -149,6 +150,7 @@ nav {
 footer {
     position: relative;
     height: 10vh;
+    min-height: 6rem;
     width: 100vw;
     background: $clr-neutral-800;
     margin-top: auto;

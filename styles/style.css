@@ -761,106 +761,144 @@ footer address p.contact-info a {
 }
 
 .contact-card .icons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  padding: 0 3rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (minmax(2rem, 1fr))[4];
+      grid-template-rows: repeat(4, minmax(2rem, 1fr));
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
 }
 
-.contact-card .fa {
-  font-size: 5rem;
-  color: black;
-  padding: 1rem;
-  margin-left: 3rem;
-  -webkit-transition: color 300ms;
-  transition: color 300ms;
-}
-
-.contact-card .fa:hover {
-  color: #0c75e8;
-}
-
-.contact-card .github .fa:hover {
-  color: #0a66c2;
-}
-
-.contact-card .linkedin .fa:hover {
-  color: #0a66c2;
-}
-
-.contact-card .phone,
-.contact-card .github,
-.contact-card .linkedin,
-.contact-card .email {
+.contact-card .icons div {
+  list-style: none;
+  cursor: pointer;
   position: relative;
+  margin: 1rem;
+  width: 5rem;
+  height: 5rem;
 }
 
-.contact-card .github .fa::after {
+.contact-card .icons div img {
+  width: 100%;
+  height: 100%;
+}
+
+.contact-card .icons div::after {
+  font-size: 2rem;
+  white-space: nowrap;
+  position: absolute;
+  top: 50%;
+  left: 6rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border-right: 2px solid #0c75e8;
+  overflow: hidden;
+  width: 0;
+  -webkit-transition: width 500ms ease-in-out;
+  transition: width 500ms ease-in-out;
+}
+
+.contact-card .icons .github {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+}
+
+.contact-card .icons .github::after {
   content: "GitHub";
 }
 
-.contact-card .linkedin .fa::after {
+.contact-card .icons .github:hover::after {
+  width: 7.5rem;
+}
+
+.contact-card .icons .linkedin {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+.contact-card .icons .linkedin::after {
   content: "LinkedIn";
 }
 
-.contact-card .email .fa::after {
+.contact-card .icons .linkedin:hover::after {
+  width: 9.5rem;
+}
+
+.contact-card .icons .email {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+}
+
+.contact-card .icons .email::after {
   content: "Email";
 }
 
-.contact-card .phone .fa::after {
+.contact-card .icons .email:hover::after {
+  width: 6.5rem;
+}
+
+.contact-card .icons .phone {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+.contact-card .icons .phone::after {
   content: "+1 (914) 260-4235";
 }
 
-.contact-card .fa::after {
-  position: absolute;
-  left: 10rem;
-  font-size: 2rem;
-  top: 50%;
-  font-family: "Sen", sans-serif;
-  -webkit-transition: -webkit-transform 300ms;
-  transition: -webkit-transform 300ms;
-  transition: transform 300ms;
-  transition: transform 300ms, -webkit-transform 300ms;
-  -webkit-transform: translateY(-50%) scaleX(0);
-          transform: translateY(-50%) scaleX(0);
-  -webkit-transform-origin: left;
-          transform-origin: left;
+.contact-card .icons .phone:hover::after {
+  width: 17.5rem;
 }
 
-.contact-card .fa:hover::after {
-  -webkit-transform: translateY(-50%) scaleX(1);
-          transform: translateY(-50%) scaleX(1);
+@media screen and (max-width: 870px) {
+  .contact-card .icons .linkedin {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    grid-row: 2/3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+  .contact-card .icons .email {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    grid-row: 3/4;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+  .contact-card .icons .phone {
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 1;
+    grid-row: 4/5;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
 }
 
-@media screen and (min-width: 800px) {
-  .contact-card .icons {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
-  }
-  .contact-card .icons .fa {
-    margin-left: 0;
-    margin-bottom: 3rem;
-  }
-  .contact-card .icons .fa::after {
-    left: 50%;
-    top: 7rem;
-    -webkit-transform: translateX(-50%) scaleY(0);
-            transform: translateX(-50%) scaleY(0);
-    -webkit-transform-origin: top;
-            transform-origin: top;
-    font-weight: lighter;
-  }
-  .contact-card .icons .fa:hover::after {
-    -webkit-transform: translateX(-50%) scaleY(1);
-            transform: translateX(-50%) scaleY(1);
+@media screen and (max-width: 500px) {
+  .contact-card {
+    width: 90%;
+    height: 90%;
+    min-width: 30rem;
   }
 }
 

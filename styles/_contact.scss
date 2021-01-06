@@ -44,10 +44,16 @@
             top: 50%;
             left: 6rem;
             transform: translateY(-50%);
-            border-right: 2px solid $clr-primary-400;
+            border-right: 4px solid $clr-primary-400;
+            color: $clr-primary-400;
             overflow: hidden;
             width: 0;
-            transition: width 500ms ease-in-out;
+            transition-property: width, border-right;
+            transition-duration: 500ms;
+            transition-timing-function: ease-in-out;
+        }
+        div:hover::after {
+            border-right: 4px solid black;
         }
 
         .github {

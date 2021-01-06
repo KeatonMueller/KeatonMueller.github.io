@@ -792,11 +792,20 @@ footer address p.contact-info a {
   left: 6rem;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  border-right: 2px solid #0c75e8;
+  border-right: 4px solid #0c75e8;
+  color: #0c75e8;
   overflow: hidden;
   width: 0;
-  -webkit-transition: width 500ms ease-in-out;
-  transition: width 500ms ease-in-out;
+  -webkit-transition-property: width, border-right;
+  transition-property: width, border-right;
+  -webkit-transition-duration: 500ms;
+          transition-duration: 500ms;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.contact-card .icons div:hover::after {
+  border-right: 4px solid black;
 }
 
 .contact-card .icons .github {

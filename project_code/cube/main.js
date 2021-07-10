@@ -39,6 +39,7 @@ const getTolerance = () => {
 
 const moveBuffer = [];
 let animating = false;
+let solving = false;
 
 const domElement = document.getElementById("three");
 
@@ -73,22 +74,249 @@ controls.enablePan = false;
 controls.update();
 
 const cube = new Cube(scene, meshArray, facesMap);
+const noop = () => {};
+
+// solve the cube
+const solveCube = () => {
+    // get the scramble from the cube
+    let scramble = cube.getMoves();
+    // get the solution from the web assembly module
+    let solution = Module.getSolution(scramble);
+
+    // process each solution move
+    solution.split(" ").forEach((move) => {
+        // big ugly switch statement to handle all possible moves
+        switch (move) {
+            case "U":
+                moveBuffer.push(cube.moveU(1));
+                break;
+            case "U2":
+                moveBuffer.push(cube.moveU(1));
+                moveBuffer.push(cube.moveU(1));
+                break;
+            case "D":
+                moveBuffer.push(cube.moveD(1));
+                break;
+            case "D2":
+                moveBuffer.push(cube.moveD(1));
+                moveBuffer.push(cube.moveD(1));
+                break;
+            case "F":
+                moveBuffer.push(cube.moveF(1));
+                break;
+            case "F2":
+                moveBuffer.push(cube.moveF(1));
+                moveBuffer.push(cube.moveF(1));
+                break;
+            case "B":
+                moveBuffer.push(cube.moveB(1));
+                break;
+            case "B2":
+                moveBuffer.push(cube.moveB(1));
+                moveBuffer.push(cube.moveB(1));
+                break;
+            case "R":
+                moveBuffer.push(cube.moveR(1));
+                break;
+            case "R2":
+                moveBuffer.push(cube.moveR(1));
+                moveBuffer.push(cube.moveR(1));
+                break;
+            case "L":
+                moveBuffer.push(cube.moveL(1));
+                break;
+            case "L2":
+                moveBuffer.push(cube.moveL(1));
+                moveBuffer.push(cube.moveL(1));
+                break;
+            case "M":
+                moveBuffer.push(cube.moveM(1));
+                break;
+            case "M2":
+                moveBuffer.push(cube.moveM(1));
+                moveBuffer.push(cube.moveM(1));
+                break;
+            case "E":
+                moveBuffer.push(cube.moveE(1));
+                break;
+            case "E2":
+                moveBuffer.push(cube.moveE(1));
+                moveBuffer.push(cube.moveE(1));
+                break;
+            case "S":
+                moveBuffer.push(cube.moveS(1));
+                break;
+            case "S2":
+                moveBuffer.push(cube.moveS(1));
+                moveBuffer.push(cube.moveS(1));
+                break;
+            case "U'":
+                moveBuffer.push(cube.moveU(-1));
+                break;
+            case "D'":
+                moveBuffer.push(cube.moveD(-1));
+                break;
+            case "F'":
+                moveBuffer.push(cube.moveF(-1));
+                break;
+            case "B'":
+                moveBuffer.push(cube.moveB(-1));
+                break;
+            case "R'":
+                moveBuffer.push(cube.moveR(-1));
+                break;
+            case "L'":
+                moveBuffer.push(cube.moveL(-1));
+                break;
+            case "M'":
+                moveBuffer.push(cube.moveM(-1));
+                break;
+            case "E'":
+                moveBuffer.push(cube.moveE(-1));
+                break;
+            case "S'":
+                moveBuffer.push(cube.moveS(-1));
+                break;
+            case "u":
+                moveBuffer.push(cube.moveWideU(1));
+                break;
+            case "u2":
+                moveBuffer.push(cube.moveWideU(1));
+                moveBuffer.push(cube.moveWideU(1));
+                break;
+            case "d":
+                moveBuffer.push(cube.moveWideD(1));
+                break;
+            case "d2":
+                moveBuffer.push(cube.moveWideD(1));
+                moveBuffer.push(cube.moveWideD(1));
+                break;
+            case "f":
+                moveBuffer.push(cube.moveWideF(1));
+                break;
+            case "f2":
+                moveBuffer.push(cube.moveWideF(1));
+                moveBuffer.push(cube.moveWideF(1));
+                break;
+            case "b":
+                moveBuffer.push(cube.moveWideB(1));
+                break;
+            case "b2":
+                moveBuffer.push(cube.moveWideB(1));
+                moveBuffer.push(cube.moveWideB(1));
+                break;
+            case "r":
+                moveBuffer.push(cube.moveWideR(1));
+                break;
+            case "r2":
+                moveBuffer.push(cube.moveWideR(1));
+                moveBuffer.push(cube.moveWideR(1));
+                break;
+            case "l":
+                moveBuffer.push(cube.moveWideL(1));
+                break;
+            case "l2":
+                moveBuffer.push(cube.moveWideL(1));
+                moveBuffer.push(cube.moveWideL(1));
+                break;
+            case "u'":
+                moveBuffer.push(cube.moveWideU(-1));
+                break;
+            case "d'":
+                moveBuffer.push(cube.moveWideD(-1));
+                break;
+            case "f'":
+                moveBuffer.push(cube.moveWideF(-1));
+                break;
+            case "b'":
+                moveBuffer.push(cube.moveWideB(-1));
+                break;
+            case "r'":
+                moveBuffer.push(cube.moveWideR(-1));
+                break;
+            case "l'":
+                moveBuffer.push(cube.moveWideL(-1));
+                break;
+            case "x":
+            case "X":
+                moveBuffer.push(cube.moveX(1));
+                break;
+            case "y":
+            case "Y":
+                moveBuffer.push(cube.moveY(1));
+                break;
+            case "z":
+            case "Z":
+                moveBuffer.push(cube.moveZ(1));
+                break;
+            case "x2":
+            case "X2":
+                moveBuffer.push(cube.moveX(1));
+                moveBuffer.push(cube.moveX(1));
+                break;
+            case "y2":
+            case "Y2":
+                moveBuffer.push(cube.moveY(1));
+                moveBuffer.push(cube.moveY(1));
+                break;
+            case "z2":
+            case "Z2":
+                moveBuffer.push(cube.moveZ(1));
+                moveBuffer.push(cube.moveZ(1));
+                break;
+            case "x'":
+            case "X'":
+                moveBuffer.push(cube.moveX(-1));
+                break;
+            case "y'":
+            case "Y'":
+                moveBuffer.push(cube.moveY(-1));
+                break;
+            case "z'":
+            case "Z'":
+                moveBuffer.push(cube.moveZ(-1));
+                break;
+        }
+    });
+    // push flag signaling end of the solution
+    moveBuffer.push(noop);
+};
 
 // "next frame" function
 const update = () => {
+    // if idle, and move is pending, execute it
     if (!animating && moveBuffer.length > 0) {
-        moveBuffer.pop()();
-        animating = true;
+        // get the move off the queue
+        let move = moveBuffer.shift();
+        if (move === noop) {
+            // move === noop is a special flag signaling the end of the solution
+            cube.clearMoves();
+            solving = false;
+            animating = false;
+        } else if (move === solveCube) {
+            // move === solveCube is a flag to signal the start of a solution
+            solveCube();
+        } else {
+            // normal move
+            if (typeof move !== "function") {
+                console.log("WHAT", move);
+            }
+            move();
+            animating = true;
+        }
     }
+    // if any cubie is animating, perform the animation
     cube.forEach((cubie) => {
         if (cubie.animating) {
             if (cubie.angle >= Math.PI * 0.5) {
+                // if it's finished rotating 90 degrees
                 cubie.angle = 0;
                 cubie.animating = false;
                 cubie.turn(cubie.animateAxis, cubie.animateDir);
                 cubie.lockPosition();
                 animating = false;
             } else {
+                // if it's still rotating
                 cubie.rotate(
                     cubie.animateAxis,
                     cubie.animateDir * ANIMATION_SPEED
@@ -121,6 +349,9 @@ const keyEvents = {
     r: cube.moveR(1),
     s: cube.moveS(1),
     u: cube.moveU(1),
+    x: cube.moveX(1),
+    y: cube.moveY(1),
+    z: cube.moveZ(1),
     B: cube.moveB(-1),
     D: cube.moveD(-1),
     E: cube.moveE(-1),
@@ -130,10 +361,19 @@ const keyEvents = {
     R: cube.moveR(-1),
     S: cube.moveS(-1),
     U: cube.moveU(-1),
+    X: cube.moveX(-1),
+    Y: cube.moveY(-1),
+    Z: cube.moveZ(-1),
 };
+
 const onKeyPress = (event) => {
-    if (keyEvents[event.key] !== undefined) {
+    if (!solving && keyEvents[event.key] !== undefined) {
         moveBuffer.push(keyEvents[event.key]);
+    } else if (event.key === "Enter") {
+        // immediately turn off inputs when enter key is hit
+        solving = true;
+        // queue up a request to solve the cube
+        moveBuffer.push(solveCube);
     }
 };
 document.addEventListener("keypress", onKeyPress, false);
@@ -192,7 +432,7 @@ const onDocumentMouseUp = (event) => {
 document.addEventListener("pointerup", onDocumentMouseUp, false);
 
 const onDocumentMouseMove = (event) => {
-    if (!controls.enabled && chosenAxis == null) {
+    if (!controls.enabled && chosenAxis == null && !solving) {
         delta.x = (event.offsetX / window.innerWidth) * 2 - 1 - mouse.x;
         delta.y = -(event.offsetY / getHeight()) * 2 + 1 - mouse.y;
         if (delta.length() > getTolerance()) {

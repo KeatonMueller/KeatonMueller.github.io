@@ -414,6 +414,7 @@ document.addEventListener("touchmove", onTouchMove, false);
 // mouse events
 let selectedObject;
 const onDocumentMouseDown = (event) => {
+	event.preventDefault();
 	mouse.x = (event.offsetX / window.innerWidth) * 2 - 1;
 	mouse.y = -(event.offsetY / getHeight()) * 2 + 1;
 
@@ -430,6 +431,7 @@ document.addEventListener("pointerdown", onDocumentMouseDown, false);
 let chosenAxis = null;
 let chosenDir = 0;
 const onDocumentMouseUp = (event) => {
+	event.preventDefault();
 	controls.enabled = true;
 	chosenAxis = null;
 	chosenDir = 0;
@@ -437,6 +439,7 @@ const onDocumentMouseUp = (event) => {
 document.addEventListener("pointerup", onDocumentMouseUp, false);
 
 const onDocumentMouseMove = (event) => {
+	event.preventDefault();
 	if (!controls.enabled && chosenAxis == null && !solving) {
 		delta.x = (event.offsetX / window.innerWidth) * 2 - 1 - mouse.x;
 		delta.y = -(event.offsetY / getHeight()) * 2 + 1 - mouse.y;

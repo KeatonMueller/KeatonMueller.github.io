@@ -405,6 +405,7 @@ const onTouchEnd = (event) => {
 document.addEventListener("touchend", onTouchEnd, false);
 
 const onTouchMove = (event) => {
+	event.preventDefault();
 	event.offsetX = event.touches[0].clientX;
 	event.offsetY = event.touches[0].clientY - getHeaderSize();
 	onDocumentMouseMove(event);
@@ -414,7 +415,6 @@ document.addEventListener("touchmove", onTouchMove, false);
 // mouse events
 let selectedObject;
 const onDocumentMouseDown = (event) => {
-	event.preventDefault();
 	mouse.x = (event.offsetX / window.innerWidth) * 2 - 1;
 	mouse.y = -(event.offsetY / getHeight()) * 2 + 1;
 
@@ -431,7 +431,6 @@ document.addEventListener("pointerdown", onDocumentMouseDown, false);
 let chosenAxis = null;
 let chosenDir = 0;
 const onDocumentMouseUp = (event) => {
-	event.preventDefault();
 	controls.enabled = true;
 	chosenAxis = null;
 	chosenDir = 0;

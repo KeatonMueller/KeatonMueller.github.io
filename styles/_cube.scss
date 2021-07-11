@@ -1,20 +1,47 @@
 .three-container {
-    overflow: hidden;
-    height: 90vh;
+	position: relative;
+	overflow: hidden;
+	height: 90vh;
 }
 
 .no-js .three-container::after {
-    content: "You must enable JavaScript to view this";
-    font-size: 2rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	content: "You must enable JavaScript to view this";
+	font-size: 2rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#solve-button {
+	font-family: "Sen", sans-serif;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	display: inline-block;
+	background-color: #f5f5f5;
+	font-size: 15px;
+	padding: 5px 10px;
+	margin: 2.5px 0;
+	border: 2px solid black;
+	border-radius: 5px;
+	cursor: pointer;
+	-webkit-transition-property: color, background-color;
+	transition-property: color, background-color;
+	-webkit-transition-duration: 250ms;
+	transition-duration: 250ms;
+}
+
+#solve-button:hover {
+	background-color: #0c75e8;
+	color: white;
 }
 
 // make sure height is exact to prevent scrolling on mobile
 @media screen and (max-width: 500px) {
-    .three-container {
-        height: 86vh;
-    }
+	.three-container {
+		position: relative;
+		overflow: hidden;
+		height: 86vh;
+	}
 }

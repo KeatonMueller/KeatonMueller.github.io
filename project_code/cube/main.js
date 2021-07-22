@@ -2,7 +2,13 @@ import * as THREE from "https://unpkg.com/three@0.124.0/build/three.module.js";
 import { OrbitControls } from "../../js/three/OrbitControls.js";
 
 import Cube from "./Cube.js";
-import { Axes, KeysToMoves, MoveFlags, ANIMATION_SPEED } from "./Constants.js";
+import {
+    Axes,
+    KeysToMoves,
+    ClickFlags,
+    MoveFlags,
+    ANIMATION_SPEED,
+} from "./Constants.js";
 
 /**
  * Get height of header, for when this project is embedded in
@@ -41,7 +47,7 @@ const getTolerance = () => {
     if (window.innerWidth <= 500) {
         return 0.1;
     }
-    return 0.015;
+    return 0.05;
 };
 
 // FIFO buffer storing moves when they are input using the keyboard.
@@ -256,13 +262,16 @@ document.addEventListener("touchmove", onTouchMove, false);
 // variables to store the chosen move based on the mouse events
 let chosenAxis = null;
 let chosenDir = 0;
-let selectedObject = null;
+let selectedObject = ClickFlags.NONE;
 let dragging = false;
 
 /**
  * Handle clicks by finding the mesh that was clicked.
  */
 const onDocumentMouseDown = (event) => {
+    // only handle events targeting the canvas
+    if (event.target.tagName.toLowerCase() !== "canvas") return;
+
     // set dragging to true
     dragging = true;
 
@@ -274,12 +283,19 @@ const onDocumentMouseDown = (event) => {
     raycaster.setFromCamera(mouse.clone(), camera);
     const intersects = raycaster.intersectObjects(cube.meshes, true);
 
-    // do nothing if nothing was clicked
-    if (intersects.length === 0) return;
+    // if nothing was clicked, signal a cube rotation
+    if (intersects.length === 0) {
+        selectedObject = ClickFlags.ROTATION;
+        return;
+    }
 
     // update selectedObject if the topmost mesh is in the cube's stickersMap
     if (cube.stickersMap.has(intersects[0].object.uuid)) {
         selectedObject = intersects[0];
+    } else {
+        // this case happens when the black cubie in between the stickers is clicked
+        // set selectedObject to special CUBIE flag
+        selectedObject = ClickFlags.CUBIE;
     }
 };
 document.addEventListener("pointerdown", onDocumentMouseDown, false);
@@ -289,7 +305,7 @@ document.addEventListener("pointerdown", onDocumentMouseDown, false);
  */
 const onDocumentMouseUp = (event) => {
     dragging = false;
-    selectedObject = null;
+    selectedObject = ClickFlags.NONE;
     chosenAxis = null;
     chosenDir = 0;
 };
@@ -302,6 +318,9 @@ document.addEventListener("pointerup", onDocumentMouseUp, false);
 const onDocumentMouseMove = (event) => {
     // do nothing if not dragging, or if solving
     if (!dragging || chosenAxis !== null || solving) return;
+
+    // do nothing if clicked a cubie
+    if (selectedObject === ClickFlags.CUBIE) return;
 
     // find the difference of the current mouse position from where the click began
     delta.x = (event.offsetX / window.innerWidth) * 2 - 1 - mouse.x;
@@ -322,7 +341,7 @@ const onDocumentMouseMove = (event) => {
     }
 
     // check if this is a cube rotation or a turn
-    if (selectedObject === null) {
+    if (selectedObject === ClickFlags.ROTATION) {
         // do a cube rotation
         if (chosenAxis === Axes.POSITIVE.X) {
             if (chosenDir === -1) moveBuffer.push("y");
